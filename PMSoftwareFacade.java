@@ -8,9 +8,7 @@ public class PMSoftwareFacade {
         return null;
     }
 
-    public User signup(String username, String password,String email, String phoneNumber) {
-        return null;
-    }
+
 
     public Project createProject(String title, String description) {
         return null;
