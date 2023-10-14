@@ -28,10 +28,15 @@ public class Project {
         return true;
     }
 
-    public boolean addTask(Task task, Status status) {
-        
+    public boolean changeRole(User user, Role newRole) {
         return true;
     }
+
+    public boolean addTask(Task task, Status status) {
+
+        return true;
+    }
+
 
 
 
