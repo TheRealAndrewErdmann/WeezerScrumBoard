@@ -12,4 +12,12 @@ public class Project {
     private ArrayList<Column> columns;
     private ArrayList<Comment> comments;
     
+    public Project(String title, String description){
+
+    }
+
+    public Project(UUID id, String title, String description) {
+        
+    }
+
 }
