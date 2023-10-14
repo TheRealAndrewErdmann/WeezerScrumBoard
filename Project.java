@@ -41,6 +41,10 @@ public class Project {
         return true;
     }
 
+    public boolean addComment(Comment comment) {
+        return true;
+    }
+
 
 
 
