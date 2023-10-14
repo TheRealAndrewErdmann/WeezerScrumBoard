@@ -24,4 +24,8 @@ public class Project {
         return true;
     }
 
+    public boolean removeParticipant(User user) {
+        return true;
+    }
+
 }
