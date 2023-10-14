@@ -17,7 +17,11 @@ public class Project {
     }
 
     public Project(UUID id, String title, String description) {
-        
+
+    }
+
+    public boolean addParticipant(User user) {
+        return true;
     }
 
 }
