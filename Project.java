@@ -37,6 +37,9 @@ public class Project {
         return true;
     }
 
+    public boolean changeTaskStatus(Task task, Status status) {
+        return true;
+    }
 
 
 
