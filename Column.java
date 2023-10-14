@@ -7,9 +7,9 @@ public class Column {
     private ArrayList<Task> tasks;
     private ArrayList<String> status;
 
-    public Column(String name, Status status) {
+    public Column(String name, String status) {
         columnName = name;
-
+        this.status.add(status);
     }
 
     public boolean addTask(Task task) {
