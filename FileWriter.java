@@ -1,5 +1,5 @@
 
-public class FileReader{
+public class FileWriter{
 
     public void saveUsers(){
 
