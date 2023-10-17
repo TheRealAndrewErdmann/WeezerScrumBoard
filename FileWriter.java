@@ -9,6 +9,8 @@ public class FileWriter{
 
     public void saveUsers(){
         UserList userList = UserList.getInstance();
+        ArrayList<User> users = userList.getUsers();
+        JSONArray jsonUsers = new JSONArray();
 
     }
 
