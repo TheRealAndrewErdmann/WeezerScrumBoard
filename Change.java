@@ -1,3 +1,4 @@
+import java.util.Date;
 
 public class Change {
 	private String changeDescription;
@@ -22,8 +23,6 @@ public class Change {
 	public User getAuthor() {
 		return author;
 	}
-
-}
 
 	public void setAuthor(User author) {
 		this.author = author;

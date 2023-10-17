@@ -1,4 +1,3 @@
-package WeezerScrumBoard;
 
 import java.util.ArrayList;
 
@@ -16,7 +15,7 @@ public class ProjectList {
     }
 
     public Project getProject(String title){
-        return new Project;
+        return new Project("", "");
     }
 }
 
