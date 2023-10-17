@@ -14,7 +14,7 @@ public class Task {
         return Task(taskName, taskDescription, category, priority);
     }
     
-    public boolean changeStatus(Status status){
+    public boolean changeStatus(String status){
         return true;
     }
 

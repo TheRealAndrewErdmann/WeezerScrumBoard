@@ -1,4 +1,3 @@
-package WeezerScrumBoard;
 
 import java.util.ArrayList;
 
@@ -16,6 +15,10 @@ public class UserList {
     }
 
     public User getUser(String username){
+        return null;
+    }
+
+    public ArrayList<User> getUsers() {
         return null;
     }
 }

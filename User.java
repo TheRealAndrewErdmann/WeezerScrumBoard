@@ -1,4 +1,4 @@
-package WeezerScrumBoard;
+//package WeezerScrumBoard;
 
 import java.util.UUID;
 
@@ -11,6 +11,7 @@ public class User {
     private String email;
     private String phoneNum;
 
+    //Constructor for creating a new user for the app on signup
     public User(String firstName, String lastName, String userName, String password,
                 String email, String phoneNum) {
         this.firstName = firstName;
@@ -19,9 +20,11 @@ public class User {
         this.password = password;
         this.email = email;
         this.phoneNum = phoneNum;
+        this.id = UUID.randomUUID();
 
     }
 
+    //Constructor for getting a user from a json file
     public User(UUID id, String firstName, String lastName, String userName, String password,
                 String email, String phoneNum) {
         this.id = id;
