@@ -1,4 +1,4 @@
-package WeezerScrumBoard;
+
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -32,12 +32,12 @@ public class Project {
         return true;
     }
 
-    public boolean addTask(Task task, Status status) {
+    public boolean addTask(Task task, String status) {
 
         return true;
     }
 
-    public boolean changeTaskStatus(Task task, Status status) {
+    public boolean changeTaskStatus(Task task, String status) {
         return true;
     }
 

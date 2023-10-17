@@ -1,4 +1,3 @@
-package WeezerScrumBoard;
 
 public class FileReader{
 

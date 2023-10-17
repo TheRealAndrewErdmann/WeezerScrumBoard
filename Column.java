@@ -1,7 +1,6 @@
-package WeezerScrumBoard;
-
 import java.io.ObjectInputFilter.Status;
 import java.util.ArrayList;
+
 public class Column {
     private String columnName;
     private ArrayList<Task> tasks;

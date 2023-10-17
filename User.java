@@ -1,4 +1,3 @@
-package WeezerScrumBoard;
 
 import java.util.UUID;
 

@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Task {
-    private UUID Id;
+    private UUID id;
     private String taskName;
     private String taskDescription;
     private Category category;
@@ -13,7 +14,7 @@ public class Task {
         return Task(taskName, taskDescription, category, priority);
     }
     
-    public boolean changeStatus(Status status){
+    public boolean changeStatus(String status){
         return true;
     }
 
