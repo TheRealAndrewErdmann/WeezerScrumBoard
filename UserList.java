@@ -3,14 +3,14 @@ import java.util.ArrayList;
 
 public class UserList {
     private static UserList userList; 
-    private ArrayList<User> users;
+    private static ArrayList<User> users;
 
     private UserList(){
         this.userList = userList;
         this.users = users;
     }
 
-    public UserList getInstance(){
+    public static UserList getInstance(){
         return null;
     }
 

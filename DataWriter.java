@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class FileWriter extends FileConstants{
+public class DataWriter extends FileConstants{
 
     public void saveUsers(){
         UserList userList = UserList.getInstance();
@@ -36,7 +36,6 @@ public class FileWriter extends FileConstants{
         userInfo.put(PASSWORD, user.getPassword());
         userInfo.put(EMAIL, user.getEmail());
         userInfo.put(PHONE_NUMBER, user.getPhoneNum());
-        
         
         return userInfo;
 	}
