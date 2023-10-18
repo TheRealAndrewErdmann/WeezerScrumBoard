@@ -6,5 +6,12 @@ public abstract class FileConstants {
     protected static final String PASSWORD = "password";
     protected static final String EMAIL = "email";
     protected static final String PHONE_NUMBER = "phoneNum";
+
+    protected static final String TITLE = "title";
+    protected static final String DESCRIPTION = "description";
+    protected static final String PARTICIPANTS = "participants";
+    protected static final String COLUMNS = "columns";
+    protected static final String COMMENTS = "comments";
+
     
 }
