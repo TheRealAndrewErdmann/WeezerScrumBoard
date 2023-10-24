@@ -43,14 +43,15 @@ public class FileLoader extends FileConstants{
 
     }
 
+    //main method 
     //Still working on the getProjects method
     //Commented out to compile for testing getUsers method 
-    /*
+    
     public ArrayList<Project> getProjects() {
         ArrayList<Project> projects = new ArrayList<Project>();
 
         try {
-			FileReader reader = new FileReader("user.json");
+			FileReader reader = new FileReader("project.json");
 			JSONParser parser = new JSONParser();
 			JSONArray projectsJSON = (JSONArray)new JSONParser().parse(reader);
 
@@ -62,16 +63,50 @@ public class FileLoader extends FileConstants{
                 //Read in hashmap of participants here
 
                 //Read in the array of columns
-                JSONArray columns = (JSONArray) projectJSON.get("task");
+                JSONArray columns = (JSONArray) projectJSON.get("columns");
                 for (int j = 0; j < columns.size(); j++) {
-                    String name = (String)projectJSON.get("columnName");
+                    //make json object for column
+                    JSONObject columnJSON = (JSONObject)columns.get(i);
+                    String name = (String)columnJSON.get("columnName");
 
 
                     //Read in the array of tasks in each column
-                    //for (int k = 0; k < )
+                    JSONArray tasks = (JSONArray) projectJSON.get("task");
+                    for (int k = 0; k < tasks.size(); k++) {
+                        JSONObject taskJSON = (JSONObject)columns.get(i);
+                        UUID idTask = UUID.fromString((String)taskJSON.get("id"));
+                        String taskName = (String)columnJSON.get("taskName");
+                        String taskDescription = (String)columnJSON.get("taskDescription");
+                        String category = (String)columnJSON.get("category");
+                        String priority = (String)columnJSON.get("priority");
+                    
 
                         //Read in the array of comments and replies on each task
+                        JSONArray comments = (JSONArray) projectJSON.get("comments");
+                        for (int l = 0; l < tasks.size(); l++) {
+                            JSONObject commentJSON = (JSONObject)comments.get(i);
+                            UUID author = UUID.fromString((String)commentJSON.get("author"));
+                            String comment = (String)commentJSON.get("comment");
+                            String date = (String)commentJSON.get("date");
 
+                            JSONArray replies = (JSONArray) projectJSON.get("replies");
+                            for (int m = 0; m < tasks.size(); m++) {
+                                JSONObject replyJSON = (JSONObject)replies.get(i);
+                                UUID authorReply = UUID.fromString((String)commentJSON.get("author"));
+                                String reply = (String)commentJSON.get("comment");
+                                String dateReply = (String)commentJSON.get("date");
+                            }
+                        }
+                    }
+
+                    JSONArray changes = (JSONArray) projectJSON.get("changes");
+                    for (int n = 0; n < tasks.size(); n++) {
+                        JSONObject changeJSON = (JSONObject)changes.get(i);
+                        String changeDescription = (String)changeJSON.get("changeDescription");
+                        String changeAuthor = (String)changeJSON.get("changeAuthor");
+                        String changeDate = (String)changeJSON.get("changeDate");
+                    }
+                    String status = (String)columnJSON.get("status");
                     //Read in the array of comments and replies on each project
                 }
             }
@@ -84,6 +119,10 @@ public class FileLoader extends FileConstants{
 
         return null;
     }
-    */
+    // */
     
+        //main method 
+        //make object with parameters
+        //save user in file writer
+        //then load in file loader
 }
