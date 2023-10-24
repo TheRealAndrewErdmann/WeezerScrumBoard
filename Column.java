@@ -11,10 +11,26 @@ public class Column {
     }
 
     public boolean addTask(Task task) {
-        return false;
+        if (tasks.add(task)) {
+            return true;
+        }
+        else if (task == null) {
+            return false;
+        }
+        else {
+            return false;
+        }
     }
 
     public boolean removeTask(Task task) {
-        return false;
+        if (tasks.remove(task)) {
+            return true;
+        }
+        else if (task == null) {
+            return false;
+        }
+        else {
+            return false;
+        }
     }
 }
