@@ -41,4 +41,10 @@ public class User {
         return false;
     }
     
+    //getters and setters 
+    public String getfirstName(){
+        return firstName;
+    }
+
+    
 }
