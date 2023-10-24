@@ -45,4 +45,28 @@ public class Project {
         return true;
     }
 
+    //getters for DataWriter
+    public UUID getID(){
+        return id;
+    }
+
+    public String title(){
+        return title;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public Map<Role, User> getParticipants(){
+        return participants;
+    }
+
+    public ArrayList<Column> getColumns(){
+        return columns;
+    }
+
+    public ArrayList<Comment> getComments(){
+        return comments;
+    }
 }
