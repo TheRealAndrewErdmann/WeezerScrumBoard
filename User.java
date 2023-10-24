@@ -40,5 +40,35 @@ public class User {
     public boolean verifyLogin(String Password) {
         return false;
     }
+
+    public UUID getID() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+
     
 }
