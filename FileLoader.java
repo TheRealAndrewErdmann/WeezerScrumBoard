@@ -60,19 +60,25 @@ public class FileLoader extends FileConstants{
                 UUID id = UUID.fromString((String)projectJSON.get("id"));
                 String title = (String)projectJSON.get("title");
                 String description = (String)projectJSON.get("description");
-                //Read in hashmap of participants here
+
+                //Read in hashmap of participants
+                JSONArray participants = (JSONArray) projectJSON.get("participants");
+                for (int j = 0; j < participants.size(); j++) {
+                    JSONObject participantJSON = (JSONObject)participants.get(i);
+                    String role = (String)projectJSON.get("role");
+                    UUID user = UUID.fromString((String)projectJSON.get("user"));
+                }
 
                 //Read in the array of columns
                 JSONArray columns = (JSONArray) projectJSON.get("columns");
-                for (int j = 0; j < columns.size(); j++) {
+                for (int k = 0; k < columns.size(); k++) {
                     //make json object for column
                     JSONObject columnJSON = (JSONObject)columns.get(i);
                     String name = (String)columnJSON.get("columnName");
 
-
                     //Read in the array of tasks in each column
                     JSONArray tasks = (JSONArray) projectJSON.get("task");
-                    for (int k = 0; k < tasks.size(); k++) {
+                    for (int l = 0; l < tasks.size(); l++) {
                         JSONObject taskJSON = (JSONObject)columns.get(i);
                         UUID idTask = UUID.fromString((String)taskJSON.get("id"));
                         String taskName = (String)columnJSON.get("taskName");
@@ -80,17 +86,16 @@ public class FileLoader extends FileConstants{
                         String category = (String)columnJSON.get("category");
                         String priority = (String)columnJSON.get("priority");
                     
-
                         //Read in the array of comments and replies on each task
                         JSONArray comments = (JSONArray) projectJSON.get("comments");
-                        for (int l = 0; l < tasks.size(); l++) {
+                        for (int m = 0; m < tasks.size(); m++) {
                             JSONObject commentJSON = (JSONObject)comments.get(i);
                             UUID author = UUID.fromString((String)commentJSON.get("author"));
                             String comment = (String)commentJSON.get("comment");
                             String date = (String)commentJSON.get("date");
 
                             JSONArray replies = (JSONArray) projectJSON.get("replies");
-                            for (int m = 0; m < tasks.size(); m++) {
+                            for (int n = 0; n < tasks.size(); n++) {
                                 JSONObject replyJSON = (JSONObject)replies.get(i);
                                 UUID authorReply = UUID.fromString((String)commentJSON.get("author"));
                                 String reply = (String)commentJSON.get("comment");
@@ -98,17 +103,36 @@ public class FileLoader extends FileConstants{
                             }
                         }
                     }
-
+                    
+                    //read in the array of changes on each task
                     JSONArray changes = (JSONArray) projectJSON.get("changes");
-                    for (int n = 0; n < tasks.size(); n++) {
+                    for (int o = 0; o < tasks.size(); o++) {
                         JSONObject changeJSON = (JSONObject)changes.get(i);
                         String changeDescription = (String)changeJSON.get("changeDescription");
                         String changeAuthor = (String)changeJSON.get("changeAuthor");
                         String changeDate = (String)changeJSON.get("changeDate");
                     }
                     String status = (String)columnJSON.get("status");
-                    //Read in the array of comments and replies on each project
                 }
+
+                //read in the array of comments and replies for projects
+                JSONArray comments = (JSONArray) projectJSON.get("comments");
+                        for (int m = 0; m < projectsJSON.size(); m++) {
+                            JSONObject commentJSON = (JSONObject)comments.get(i);
+                            UUID author = UUID.fromString((String)commentJSON.get("author"));
+                            String comment = (String)commentJSON.get("comment");
+                            String date = (String)commentJSON.get("date");
+
+                            JSONArray replies = (JSONArray) projectJSON.get("replies");
+                            for (int n = 0; n < projectJSON.size(); n++) {
+                                JSONObject replyJSON = (JSONObject)replies.get(i);
+                                UUID authorReply = UUID.fromString((String)commentJSON.get("author"));
+                                String reply = (String)commentJSON.get("comment");
+                                String dateReply = (String)commentJSON.get("date");
+                            }
+                        }
+
+                projects.add(new Project(id, title, description, participants, columns, comments));
             }
         
         }   
@@ -119,10 +143,5 @@ public class FileLoader extends FileConstants{
 
         return null;
     }
-    // */
     
-        //main method 
-        //make object with parameters
-        //save user in file writer
-        //then load in file loader
 }
