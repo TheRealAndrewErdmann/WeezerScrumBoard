@@ -65,7 +65,7 @@ public class Project {
         return id;
     }
 
-    public String title(){
+    public String getTitle(){
         return title;
     }
 
