@@ -38,7 +38,12 @@ public class User {
     }
 
     public boolean verifyLogin(String Password) {
-        return false;
+        if (password == Password) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public UUID getID() {
