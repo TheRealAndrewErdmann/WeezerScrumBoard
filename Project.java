@@ -2,6 +2,7 @@
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.HashMap;
 
 public class Project {
 
@@ -13,11 +14,25 @@ public class Project {
     private ArrayList<Comment> comments;
     
     public Project(String title, String description){
-
+        this.title = title;
+        this.description = description;
+        this.participants = new HashMap<Role, User>();
+        this.columns = new ArrayList<Column>();
+        this.comments = new ArrayList<Comment>();
     }
 
     public Project(UUID id, String title, String description) {
+        this(title, description);
+        this.id = id;
+    }
 
+    public Project(UUID id, String title, String description, Map<Role,User> participants, ArrayList<Column> columns, ArrayList<Comment> comments) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.participants = participants;
+        this.columns = columns;
+        this.comments = comments;
     }
 
     public boolean addParticipant(User user) {
