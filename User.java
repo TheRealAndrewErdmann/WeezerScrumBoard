@@ -34,6 +34,7 @@ public class User {
 
     }
 
+<<<<<<< HEAD
     public UUID getid(){
         return id;
     }
@@ -64,7 +65,46 @@ public class User {
 
     public boolean verifyLogin(String Password){
         return false;
+=======
+    public boolean verifyLogin(String Password) {
+        if (password == Password) {
+            return true;
+        }
+        else {
+            return false;
+        }
+>>>>>>> ba1ff75b4bf0c14b2b30df630f961ff23581b2c6
     }
+
+    public UUID getID() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+
     
 
 }
