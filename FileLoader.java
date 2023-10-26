@@ -1,6 +1,7 @@
 
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.UUID;
 
 import org.json.simple.JSONArray;
@@ -42,10 +43,14 @@ public class FileLoader extends FileConstants{
         return null;
 
     }
-
     
     public ArrayList<Project> getProjects() {
         ArrayList<Project> projects = new ArrayList<Project>();
+        ArrayList<Column> columns = new ArrayList<Column>();
+        ArrayList<Comment> taskComments = new ArrayList<Comment>();
+        ArrayList<Comment> taskReplies = new ArrayList<Comment>();
+        ArrayList<Change> changes = new ArrayList<Change>();
+        Map<Role,User> participants_;
 
         try {
 			FileReader reader = new FileReader("project.json");
@@ -67,69 +72,82 @@ public class FileLoader extends FileConstants{
                 }
 
                 //Read in the array of columns
-                JSONArray columns = (JSONArray) projectJSON.get("columns");
+                JSONArray columnsJSON = (JSONArray) projectJSON.get("columns");
                 for (int k = 0; k < columns.size(); k++) {
                     //make json object for column
-                    JSONObject columnJSON = (JSONObject)columns.get(i);
-                    String name = (String)columnJSON.get("columnName");
+                    JSONObject columnJSON = (JSONObject)columnsJSON.get(i);
+                    String columnName = (String)columnJSON.get("columnName");
 
                     //Read in the array of tasks in each column
-                    JSONArray tasks = (JSONArray) projectJSON.get("task");
+                    ArrayList<Task> tasks = new ArrayList<Task>();
+                    JSONArray tasksJSON = (JSONArray) projectJSON.get("task");
                     for (int l = 0; l < tasks.size(); l++) {
-                        JSONObject taskJSON = (JSONObject)columns.get(i);
+                        JSONObject taskJSON = (JSONObject)columnsJSON.get(i);
                         UUID idTask = UUID.fromString((String)taskJSON.get("id"));
                         String taskName = (String)columnJSON.get("taskName");
                         String taskDescription = (String)columnJSON.get("taskDescription");
-                        String category = (String)columnJSON.get("category");
+                        Category category = (Category)columnJSON.get("category");
                         String priority = (String)columnJSON.get("priority");
                     
                         //Read in the array of comments and replies on each task
-                        JSONArray comments = (JSONArray) projectJSON.get("comments");
+                        JSONArray commentsJSON = (JSONArray) projectJSON.get("comments");
                         for (int m = 0; m < tasks.size(); m++) {
-                            JSONObject commentJSON = (JSONObject)comments.get(i);
-                            UUID author = UUID.fromString((String)commentJSON.get("author"));
+                            JSONObject commentJSON = (JSONObject)commentsJSON.get(i);
+                            User author = (User)commentJSON.get("author");
                             String comment = (String)commentJSON.get("comment");
                             String date = (String)commentJSON.get("date");
+                            taskComments.add(new Comment(author, comment));
 
-                            JSONArray replies = (JSONArray) projectJSON.get("replies");
+                            JSONArray repliesJSON = (JSONArray) projectJSON.get("replies");
                             for (int n = 0; n < tasks.size(); n++) {
-                                JSONObject replyJSON = (JSONObject)replies.get(i);
-                                UUID authorReply = UUID.fromString((String)commentJSON.get("author"));
+                                JSONObject replyJSON = (JSONObject)repliesJSON.get(i);
+                                User authorReply = (User)commentJSON.get("author");
                                 String reply = (String)commentJSON.get("comment");
                                 String dateReply = (String)commentJSON.get("date");
+                                taskReplies.add(new Comment(authorReply, reply));
                             }
+
+                            //read in the array of changes on each task
+                            JSONArray changesJSON = (JSONArray) projectJSON.get("changes");
+                            for (int o = 0; o < tasks.size(); o++) {
+                                JSONObject changeJSON = (JSONObject)changesJSON.get(i);
+                                String changeDescription = (String)changeJSON.get("changeDescription");
+                                User changeAuthor = (User)changeJSON.get("changeAuthor");
+                                changes.add(new Change(changeDescription, changeAuthor));
+                            }
+                            
                         }
+                        tasks.add(new Task(taskName, taskDescription, category, priority));
+                        // tasks.add(new Task("taskName", "taskDescription", "category", "priority"));
+
                     }
-                    
-                    //read in the array of changes on each task
-                    JSONArray changes = (JSONArray) projectJSON.get("changes");
-                    for (int o = 0; o < tasks.size(); o++) {
-                        JSONObject changeJSON = (JSONObject)changes.get(i);
-                        String changeDescription = (String)changeJSON.get("changeDescription");
-                        String changeAuthor = (String)changeJSON.get("changeAuthor");
-                        String changeDate = (String)changeJSON.get("changeDate");
-                    }
+
                     String status = (String)columnJSON.get("status");
+                    columns.add(new Column(columnName, status));
                 }
 
                 //read in the array of comments and replies for projects
-                JSONArray comments = (JSONArray) projectJSON.get("comments");
+                JSONArray commentsJSON = (JSONArray) projectJSON.get("comments");
+                ArrayList<Comment> comments = new ArrayList<Comment>();
+                ArrayList<Comment> replies = new ArrayList<Comment>();
                         for (int m = 0; m < projectsJSON.size(); m++) {
-                            JSONObject commentJSON = (JSONObject)comments.get(i);
-                            UUID author = UUID.fromString((String)commentJSON.get("author"));
+                            JSONObject commentJSON = (JSONObject)commentsJSON.get(i);
+                            User author = (User)commentJSON.get("author");
                             String comment = (String)commentJSON.get("comment");
                             String date = (String)commentJSON.get("date");
+                            comments.add(new Comment(author, comment));
 
-                            JSONArray replies = (JSONArray) projectJSON.get("replies");
+                            JSONArray repliesJSON = (JSONArray) projectJSON.get("replies");
                             for (int n = 0; n < projectJSON.size(); n++) {
-                                JSONObject replyJSON = (JSONObject)replies.get(i);
-                                UUID authorReply = UUID.fromString((String)commentJSON.get("author"));
+                                JSONObject replyJSON = (JSONObject)repliesJSON.get(i);
+                                User authorReply = (User)commentJSON.get("author");
                                 String reply = (String)commentJSON.get("comment");
                                 String dateReply = (String)commentJSON.get("date");
+                                replies.add(new Comment(authorReply, reply));
                             }
                         }
 
-                projects.add(new Project(id, title, description, participants, columns, comments));
+                projects.add(new Project(id, title, description, participants_, columns, comments));
             }
         
         }   
