@@ -9,14 +9,14 @@ public class Project {
     private UUID id;
     private String title;
     private String description;
-    private Map<Role,User> participants;
+    private Map<Role,ArrayList<User>> participants;
     private ArrayList<Column> columns;
     private ArrayList<Comment> comments;
     
     public Project(String title, String description){
         this.title = title;
         this.description = description;
-        this.participants = new HashMap<Role, User>();
+        this.participants = new HashMap<Role, ArrayList<User>>();
         this.columns = new ArrayList<Column>();
         this.comments = new ArrayList<Comment>();
     }
@@ -26,7 +26,7 @@ public class Project {
         this.id = id;
     }
 
-    public Project(UUID id, String title, String description, Map<Role,User> participants, ArrayList<Column> columns, ArrayList<Comment> comments) {
+    public Project(UUID id, String title, String description, Map<Role,ArrayList<User>> participants, ArrayList<Column> columns, ArrayList<Comment> comments) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -35,20 +35,28 @@ public class Project {
         this.comments = comments;
     }
 
-    public boolean addParticipant(User user) {
-        return true;
+    public boolean addParticipant(User user, Role role) {
+        if(user == null || role == null)
+            return false;
+        return participants.get(role).add(user);
     }
 
-    public boolean removeParticipant(User user) {
-        return true;
+    public boolean removeParticipant(User user, Role role) {
+        if(user == null || role == null)
+            return false;
+        return participants.get(role).remove(user);
     }
 
-    public boolean changeRole(User user, Role newRole) {
-        return true;
+    public boolean changeRole(User user, Role curRole, Role newRole) {
+        if(user == null || curRole == null || newRole == null)
+            return false;
+        if(participants.get(curRole).remove(user) == false)
+            return false;
+        return participants.get(newRole).add(user);
     }
 
     public boolean addTask(Task task, String status) {
-
+        
         return true;
     }
 
@@ -60,28 +68,23 @@ public class Project {
         return true;
     }
 
-    //getters for DataWriter
-    public UUID getID(){
+    public UUID getID() {
         return id;
     }
-
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
-
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
-
-    public Map<Role, User> getParticipants(){
+    public Map<Role, ArrayList<User>> getParticipants() {
         return participants;
     }
-
-    public ArrayList<Column> getColumns(){
+    public ArrayList<Column> getColumns() {
         return columns;
     }
-
-    public ArrayList<Comment> getComments(){
+    public ArrayList<Comment> getComments() {
         return comments;
     }
+
 }
