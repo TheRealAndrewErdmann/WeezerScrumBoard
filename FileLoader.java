@@ -22,11 +22,11 @@ public class FileLoader extends FileConstants{
             for (int i = 0; i < usersJSON.size(); i++) {
                 JSONObject userJSON = (JSONObject)usersJSON.get(i);
                 UUID id = UUID.fromString((String)userJSON.get("id"));
-                String firstName = (String)userJSON.get("firstName");
+                String firstName= (String)userJSON.get("firstName");
                 String lastName = (String)userJSON.get("lastName");
                 String userName = (String)userJSON.get("userName");
                 String password = (String)userJSON.get("password");
-                String email = (String)userJSON.get("email");
+                String email    = (String)userJSON.get("email");
                 String phoneNum = (String)userJSON.get("phoneNum");
 
                 users.add(new User(id, firstName, lastName, userName, password, email, phoneNum));
