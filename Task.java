@@ -10,8 +10,12 @@ public class Task {
     private ArrayList<Comment> comments;
     private ArrayList<Change> changes;
 
-    public Task Task(String taskName, String taskDescription, Category category, String priority){
-        return Task(taskName, taskDescription, category, priority);
+    public Task(String taskName, String taskDescription, Category category, String priority){
+        // return Task(taskName, taskDescription, category, priority);
+        this.taskName = taskName;
+        this.taskDescription = taskDescription;
+        this.category = category;
+        this.priority = priority;
     }
     
     public boolean changeStatus(String status){
