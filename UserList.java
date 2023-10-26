@@ -1,3 +1,4 @@
+package WeezerScrumBoard;
 
 import java.util.ArrayList;
 
@@ -11,14 +12,13 @@ public class UserList {
     }
 
     public UserList getInstance(){
-        return null;
+        if (userList == null){
+            userList = new UserList();
+        }
+        return userList;
     }
 
     public User getUser(String username){
-        return null;
-    }
-
-    public ArrayList<User> getUsers() {
         return null;
     }
 }
