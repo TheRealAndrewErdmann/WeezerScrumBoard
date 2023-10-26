@@ -1,6 +1,7 @@
 
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -50,12 +51,14 @@ public class FileLoader extends FileConstants{
         ArrayList<Comment> taskComments = new ArrayList<Comment>();
         ArrayList<Comment> taskReplies = new ArrayList<Comment>();
         ArrayList<Change> changes = new ArrayList<Change>();
-        Map<Role,User> participants_;
+        Map<Role, ArrayList<User>> participantsMap = new HashMap<Role, ArrayList<User>>();
+
 
         try {
 			FileReader reader = new FileReader("project.json");
 			JSONParser parser = new JSONParser();
 			JSONArray projectsJSON = (JSONArray)new JSONParser().parse(reader);
+
 
             for (int i = 0; i < projectsJSON.size(); i++) {
                 JSONObject projectJSON = (JSONObject)projectsJSON.get(i);
@@ -146,11 +149,10 @@ public class FileLoader extends FileConstants{
                                 replies.add(new Comment(authorReply, reply));
                             }
                         }
-
-                projects.add(new Project(id, title, description, participants_, columns, comments));
+                        projects.add(new Project(id, title, description, participantsMap, columns, comments));
             }
-        
         }   
+        
         
         catch (Exception e) {
 		    e.printStackTrace();

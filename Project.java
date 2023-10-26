@@ -26,7 +26,7 @@ public class Project {
         this.id = id;
     }
 
-    public Project(UUID id, String title, String description, Map<Role,ArrayList<User>> participants, ArrayList<Column> columns, ArrayList<Comment> comments) {
+    public Project(UUID id, String title, String description, Map<Role, ArrayList<User>> participants, ArrayList<Column> columns, ArrayList<Comment> comments) {
         this.id = id;
         this.title = title;
         this.description = description;
