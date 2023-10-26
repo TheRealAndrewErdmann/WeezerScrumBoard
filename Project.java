@@ -56,16 +56,33 @@ public class Project {
     }
 
     public boolean addTask(Task task, String status) {
-        
-        return true;
+        if(task == null || status == null)
+            return false;
+        for(Column column : columns) {
+            if(column.getColumnName().equals(status)){
+                column.addTask(task);
+                return true;
+            }
+        }
+        return false;
     }
 
-    public boolean changeTaskStatus(Task task, String status) {
-        return true;
+    public boolean changeTaskStatus(Task task, String curStatus, String newStatus) {
+        if(task == null || curStatus == null || newStatus == null)
+            return false;
+        for(Column column : columns) {
+            if(column.getColumnName().equals(curStatus)) {
+                column.removeTask(task);
+            }
+        }
+        task.changeStatus(newStatus);
+        return addTask(task, newStatus);
     }
 
     public boolean addComment(Comment comment) {
-        return true;
+        if(comment == null)
+            return false;
+        return comments.add(comment);
     }
 
     public UUID getID() {
