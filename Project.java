@@ -77,7 +77,6 @@ public class Project {
         }
         task.changeStatus(newStatus);
         return addTask(task, newStatus);
-        
     }
 
     public boolean addComment(Comment comment) {
