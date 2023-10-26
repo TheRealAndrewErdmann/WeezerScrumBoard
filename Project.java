@@ -80,7 +80,9 @@ public class Project {
     }
 
     public boolean addComment(Comment comment) {
-        return true;
+        if(comment == null)
+            return false;
+        return comments.add(comment);
     }
 
     public UUID getID() {
