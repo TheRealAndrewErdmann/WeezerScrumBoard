@@ -33,4 +33,8 @@ public class Column {
             return false;
         }
     }
+
+    public String getColumnName() {
+        return columnName;
+    }
 }
