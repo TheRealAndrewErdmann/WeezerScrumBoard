@@ -5,12 +5,12 @@
         "description": "Develop a chat bot to answer users' questions and guide them around the website",
         "participants": [{
             "role": "Scrum master",
-            "user": "1705d671-8135-4e85-aa71-ba463dd9e881"
+            "user": ["1705d671-8135-4e85-aa71-ba463dd9e881"]
         },
         
         {
             "role": "Developer",
-            "user": "23979fce-f352-48fc-8d29-099c788596f6"
+            "user": ["23979fce-f352-48fc-8d29-099c788596f6"]
         }],
         "columns": [{
            "columnName": "Backlog",

@@ -10,7 +10,7 @@ public class UserList {
         this.users = users;
     }
 
-    public UserList getInstance(){
+    public static UserList getInstance(){
         if (userList == null){
             userList = new UserList();
         }
@@ -19,5 +19,9 @@ public class UserList {
 
     public User getUser(String username){
         return null;
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
     }
 }

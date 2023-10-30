@@ -1,9 +1,11 @@
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 public class Comment {
     private User author;
+    private UUID author2;
     private String comment;
     private Date datePosted;
     private ArrayList<Comment> replies;
@@ -12,6 +14,7 @@ public class Comment {
         author = user;
         this.comment = comment;
     }
+
     public boolean updateComment(String comment) {
         this.comment = comment;
         if (this.comment == comment) {

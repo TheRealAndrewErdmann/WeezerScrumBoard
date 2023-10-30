@@ -16,14 +16,14 @@ public class FileLoader extends FileConstants{
         ArrayList<User> users =  new ArrayList<User>();
 
         try {
-			FileReader reader = new FileReader("user.json");
+			FileReader reader = new FileReader("JSON/user.json");
 			JSONParser parser = new JSONParser();
 			JSONArray usersJSON = (JSONArray)new JSONParser().parse(reader);
 
             for (int i = 0; i < usersJSON.size(); i++) {
                 JSONObject userJSON = (JSONObject)usersJSON.get(i);
                 UUID id = UUID.fromString((String)userJSON.get("id"));
-                String firstName= (String)userJSON.get("firstName");
+                String firstName = (String)userJSON.get("firstName");
                 String lastName = (String)userJSON.get("lastName");
                 String userName = (String)userJSON.get("userName");
                 String password = (String)userJSON.get("password");
@@ -34,6 +34,7 @@ public class FileLoader extends FileConstants{
 
             }
 
+            //print statement for testing getUsers
             return users;
         }
 
@@ -45,17 +46,18 @@ public class FileLoader extends FileConstants{
 
     }
     
-    public ArrayList<Project> getProjects() {
+    public static ArrayList<Project> getProjects() {
         ArrayList<Project> projects = new ArrayList<Project>();
         ArrayList<Column> columns = new ArrayList<Column>();
         ArrayList<Comment> taskComments = new ArrayList<Comment>();
         ArrayList<Comment> taskReplies = new ArrayList<Comment>();
         ArrayList<Change> changes = new ArrayList<Change>();
+        ArrayList<User> userlist = new ArrayList<User>();
         Map<Role, ArrayList<User>> participantsMap = new HashMap<Role, ArrayList<User>>();
 
 
         try {
-			FileReader reader = new FileReader("project.json");
+			FileReader reader = new FileReader("JSON/project.json");
 			JSONParser parser = new JSONParser();
 			JSONArray projectsJSON = (JSONArray)new JSONParser().parse(reader);
 
@@ -67,17 +69,21 @@ public class FileLoader extends FileConstants{
                 String description = (String)projectJSON.get("description");
 
                 //Read in hashmap of participants
-                JSONArray participants = (JSONArray) projectJSON.get("participants");
-                for (int j = 0; j < participants.size(); j++) {
-                    JSONObject participantJSON = (JSONObject)participants.get(i);
-                    String role = (String)projectJSON.get("role");
-                    UUID user = UUID.fromString((String)projectJSON.get("user"));
+                JSONArray participantsJSON = (JSONArray) projectJSON.get("participants");
+                JSONArray usersJson = (JSONArray) projectJSON.get("user");
+                for (int j = 0; j < participantsJSON.size(); j++) {
+                    JSONObject participantJSON = (JSONObject)participantsJSON.get(i);
+                    JSONObject userListJSON = (JSONObject)usersJson.get(i);
+                    Role role = (Role)projectJSON.get("role");
+                    User user = (User)projectJSON.get("user");
+
+                    userlist.add(user);
+                    participantsMap.put(role, userlist);
                 }
 
                 //Read in the array of columns
                 JSONArray columnsJSON = (JSONArray) projectJSON.get("columns");
                 for (int k = 0; k < columns.size(); k++) {
-                    //make json object for column
                     JSONObject columnJSON = (JSONObject)columnsJSON.get(i);
                     String columnName = (String)columnJSON.get("columnName");
 
@@ -121,7 +127,6 @@ public class FileLoader extends FileConstants{
                             
                         }
                         tasks.add(new Task(taskName, taskDescription, category, priority));
-                        // tasks.add(new Task("taskName", "taskDescription", "category", "priority"));
 
                     }
 
@@ -135,15 +140,17 @@ public class FileLoader extends FileConstants{
                 ArrayList<Comment> replies = new ArrayList<Comment>();
                         for (int m = 0; m < projectsJSON.size(); m++) {
                             JSONObject commentJSON = (JSONObject)commentsJSON.get(i);
-                            User author = (User)commentJSON.get("author");
+                            UUID author = UUID.fromString((String)commentJSON.get("author"));
                             String comment = (String)commentJSON.get("comment");
                             String date = (String)commentJSON.get("date");
                             comments.add(new Comment(author, comment));
 
                             JSONArray repliesJSON = (JSONArray) projectJSON.get("replies");
+                            if (repliesJSON != null && !repliesJSON.isEmpty())
                             for (int n = 0; n < projectJSON.size(); n++) {
                                 JSONObject replyJSON = (JSONObject)repliesJSON.get(i);
-                                User authorReply = (User)commentJSON.get("author");
+                                //User authorReply = (User)commentJSON.get("author");
+                                UUID authorReply = UUID.fromString((String)commentJSON.get("author"));
                                 String reply = (String)commentJSON.get("comment");
                                 String dateReply = (String)commentJSON.get("date");
                                 replies.add(new Comment(authorReply, reply));
@@ -151,8 +158,9 @@ public class FileLoader extends FileConstants{
                         }
                         projects.add(new Project(id, title, description, participantsMap, columns, comments));
             }
+            return projects;
         }   
-        
+    
         
         catch (Exception e) {
 		    e.printStackTrace();
@@ -161,4 +169,27 @@ public class FileLoader extends FileConstants{
         return null;
     }
     
+    public static void main(String[] args) {
+        ArrayList<User> printUsers = getUsers();
+        for (int i = 0; i < printUsers.size(); i++) {
+            System.out.println(printUsers.get(i).getid());
+            System.out.println(printUsers.get(i).getfirstName());
+            System.out.println(printUsers.get(i).getlastName());
+            System.out.println(printUsers.get(i).getuserName());
+            System.out.println(printUsers.get(i).getpassword());
+            System.out.println(printUsers.get(i).getemail());
+            System.out.println(printUsers.get(i).getphoneNum());
+            System.out.println();
+        }
+        ArrayList<Project> printProjects = getProjects();
+        for (int i = 0; i < printProjects.size(); i++) {
+            System.out.println(printProjects.get(i).getID());
+            System.out.println(printProjects.get(i).getTitle());
+            System.out.println(printProjects.get(i).getDescription());
+            System.out.println(printProjects.get(i).getParticipants());
+            System.out.println(printProjects.get(i).getColumns());
+            System.out.println(printProjects.get(i).getComments());
+        }
+
+    }
 }

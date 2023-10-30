@@ -39,6 +39,7 @@ public class DataWriter extends FileConstants{
         
         return userInfo;
 	}
+    
 
     public void saveProjects(){
         ProjectList projectList = ProjectList.getInstance();
@@ -49,7 +50,7 @@ public class DataWriter extends FileConstants{
             jsonProjects.add(getProjectJSON(projects.get(i)));
         }
 
-        try (FileWriter file = new FileWriter("project.json")) {
+        try (FileWriter file = new FileWriter("projecttest.json")) {
  
             file.write(jsonProjects.toJSONString());
             file.flush();
