@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;
 
 public class DataWriter extends FileConstants{
 
-    public void saveUsers(){
+    public static void saveUsers(){
         UserList userList = UserList.getInstance();
         ArrayList<User> users = userList.getUsers();
         JSONArray jsonUsers = new JSONArray();
@@ -16,8 +16,8 @@ public class DataWriter extends FileConstants{
             jsonUsers.add(getUserJSON(users.get(i)));
         }
 
-        try (FileWriter file = new FileWriter("user.json")) {
- 
+        try (FileWriter file = new FileWriter("userTest.json")) {
+
             file.write(jsonUsers.toJSONString());
             file.flush();
  
@@ -27,7 +27,7 @@ public class DataWriter extends FileConstants{
 
     }
 
-    public JSONObject getUserJSON(User user) {
+    public static JSONObject getUserJSON(User user) {
 		JSONObject userInfo = new JSONObject();
         userInfo.put(ID, user.getID());
 		userInfo.put(FIRST_NAME, user.getFirstName());
@@ -41,7 +41,7 @@ public class DataWriter extends FileConstants{
 	}
     
 
-    public void saveProjects(){
+    public static void saveProjects(){
         ProjectList projectList = ProjectList.getInstance();
         ArrayList<Project> projects = projectList.getProjects();
         JSONArray jsonProjects = new JSONArray();
@@ -60,7 +60,7 @@ public class DataWriter extends FileConstants{
         }
     }
 
-    public JSONObject getProjectJSON(Project project) {
+    public static JSONObject getProjectJSON(Project project) {
         JSONObject projectInfo = new JSONObject();
         projectInfo.put(ID, project.getID());
         projectInfo.put(TITLE, project.getTitle());
@@ -70,6 +70,11 @@ public class DataWriter extends FileConstants{
         projectInfo.put(COMMENTS, project.getComments());
 
         return projectInfo;
+    }
+
+    public static void main(String[] args) {
+        saveUsers();
+        saveProjects();
     }
 
 }
