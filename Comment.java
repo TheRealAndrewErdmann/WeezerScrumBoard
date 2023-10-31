@@ -4,12 +4,12 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Comment {
-    private User author;
+    private String author;
     private String comment;
     private Date datePosted;
     private ArrayList<Comment> replies;
 
-    public Comment (User user, String comment) {
+    public Comment (String user, String comment) {
         author = user;
         this.comment = comment;
     }

@@ -97,7 +97,7 @@ public class DataWriter extends FileConstants{
     //main method for testing (delete when done testing)
     public static void main(String[] args) {
         saveUsers();
-        saveProjects();
+        //saveProjects();
     }
 
 }
