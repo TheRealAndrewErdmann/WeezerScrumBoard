@@ -2,12 +2,11 @@
 import java.util.ArrayList;
 
 public class UserList {
-    private static UserList userList; 
+    private static UserList userList = null;
     private static ArrayList<User> users;
 
     private UserList(){
-        this.userList = userList;
-        this.users = users;
+        users = FileLoader.getUsers();
     }
 
     public static UserList getInstance(){
@@ -17,11 +16,18 @@ public class UserList {
         return userList;
     }
 
-    public User getUser(String username){
-        return null;
-    }
-
     public ArrayList<User> getUsers() {
         return users;
     }
+
+
+    public User getUser(String username){
+        for(User user : users){
+            if(user.getUserName().equals(username))
+                return user;
+        }
+        return null;
+    }
+
+
 }

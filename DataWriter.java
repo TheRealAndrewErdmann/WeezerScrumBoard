@@ -31,13 +31,13 @@ public class DataWriter extends FileConstants{
 
     public static JSONObject getUserJSON(User user) {
 		JSONObject userInfo = new JSONObject();
-        userInfo.put(ID, user.getID());
-		userInfo.put(FIRST_NAME, user.getFirstName());
-		userInfo.put(LAST_NAME, user.getLastName());
-		userInfo.put(USER_NAME, user.getUserName());
-        userInfo.put(PASSWORD, user.getPassword());
-        userInfo.put(EMAIL, user.getEmail());
-        userInfo.put(PHONE_NUMBER, user.getPhoneNum());
+        userInfo.put(ID, user.getid());
+		userInfo.put(FIRST_NAME, user.getfirstName());
+		userInfo.put(LAST_NAME, user.getlastName());
+		userInfo.put(USER_NAME, user.getuserName());
+        userInfo.put(PASSWORD, user.getpassword());
+        userInfo.put(EMAIL, user.getemail());
+        userInfo.put(PHONE_NUMBER, user.getphoneNum());
         
         return userInfo;
 	}
