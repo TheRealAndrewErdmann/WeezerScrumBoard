@@ -1,14 +1,12 @@
-package WeezerScrumBoard;
 
 import java.util.ArrayList;
 
 public class UserList {
-    private static UserList userList; 
+    private static UserList userList = null;
     private static ArrayList<User> users;
 
     private UserList(){
-        this.userList = userList;
-        this.users = users;
+        users = FileLoader.getUsers();
     }
 
     public UserList getInstance(){
@@ -18,11 +16,15 @@ public class UserList {
         return userList;
     }
 
-    public static UserList getInstance(){
-        return null;
+    public ArrayList<User> getUsers(){
+        return users;
     }
 
     public User getUser(String username){
+        for(User user : users){
+            if(user.getuserName().equals(username))
+                return user;
+        }
         return null;
     }
 }

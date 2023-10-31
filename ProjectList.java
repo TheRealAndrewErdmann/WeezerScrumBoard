@@ -3,23 +3,32 @@ import java.util.ArrayList;
 
 public class ProjectList {
 
-    private static ProjectList projectList;
+    private static ProjectList projectList = null;
     private static ArrayList<Project> projects;
     
-    private ProjectList(){
-        
+    private ProjectList() {
+        projects = FileLoader.getProjects();
     }
 
     public static ProjectList getInstance(){
-        return null;
-    }
-
-    public Project getProject(String title){
-        return new Project("", "");
+        if (projectList == null){
+            projectList = new ProjectList();
+        }
+        return projectList;
     }
 
     public ArrayList<Project> getProjects() {
         return projects;
     }
+
+    public Project getProject(String title){
+       for(Project project : projects) {
+            if(project.getTitle().equals(title))
+                return project;
+       }
+       return null;
+    }
+
+
 }
 

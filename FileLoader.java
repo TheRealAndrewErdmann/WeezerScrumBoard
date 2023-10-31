@@ -45,7 +45,7 @@ public class FileLoader extends FileConstants{
 
     }
     
-    public ArrayList<Project> getProjects() {
+    public static ArrayList<Project> getProjects() {
         ArrayList<Project> projects = new ArrayList<Project>();
         ArrayList<Column> columns = new ArrayList<Column>();
         ArrayList<Comment> taskComments = new ArrayList<Comment>();
