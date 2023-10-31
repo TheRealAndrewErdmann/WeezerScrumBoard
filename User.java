@@ -1,4 +1,3 @@
-package WeezerScrumBoard;
 
 import java.util.UUID;
 
@@ -34,31 +33,31 @@ public class User {
 
     }
 
-    public UUID getid(){
+    public UUID getID(){
         return id;
     }
 
-    public String getfirstName(){
+    public String getFirstName(){
         return firstName;
     }
 
-    public String getlastName(){
+    public String getLastName(){
         return lastName;
     }
 
-    public String getuserName(){
+    public String getUserName(){
         return userName;
     }
 
-    public String getpassword(){
+    public String getPassword(){
         return password;
     }
 
-    public String getemail(){
+    public String getEmail(){
         return email;
     }
 
-    public String getphoneNum(){
+    public String getPhoneNum(){
         return phoneNum;
     }
 

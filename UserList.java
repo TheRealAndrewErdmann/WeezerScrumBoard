@@ -9,15 +9,15 @@ public class UserList {
         users = FileLoader.getUsers();
     }
 
-    public UserList getInstance(){
+    public static UserList getInstance(){
         if (userList == null){
             userList = new UserList();
         }
         return userList;
     }
 
-    public ArrayList<User> getUsers(){
-        return users;
+    public static UserList getInstance(){
+        return null;
     }
 
     public User getUser(String username){
@@ -26,5 +26,9 @@ public class UserList {
                 return user;
         }
         return null;
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
     }
 }
