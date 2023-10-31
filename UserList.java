@@ -16,19 +16,18 @@ public class UserList {
         return userList;
     }
 
-    public static UserList getInstance(){
-        return null;
+    public ArrayList<User> getUsers() {
+        return users;
     }
+
 
     public User getUser(String username){
         for(User user : users){
-            if(user.getuserName().equals(username))
+            if(user.getUserName().equals(username))
                 return user;
         }
         return null;
     }
 
-    public ArrayList<User> getUsers() {
-        return users;
-    }
+
 }
