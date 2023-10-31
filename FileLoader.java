@@ -70,10 +70,10 @@ public class FileLoader extends FileConstants{
 
                 //Read in hashmap of participants
                 JSONArray participantsJSON = (JSONArray) projectJSON.get("participants");
-                JSONArray usersJson = (JSONArray) projectJSON.get("user");
+                JSONArray usersHashJson = (JSONArray) projectJSON.get("user");
                 for (int j = 0; j < participantsJSON.size(); j++) {
                     JSONObject participantJSON = (JSONObject)participantsJSON.get(i);
-                    JSONObject userListJSON = (JSONObject)usersJson.get(i);
+                    JSONObject userListJSON = (JSONObject)usersHashJson.get(i);
                     Role role = (Role)projectJSON.get("role");
                     User user = (User)projectJSON.get("user");
 
@@ -140,7 +140,7 @@ public class FileLoader extends FileConstants{
                 ArrayList<Comment> replies = new ArrayList<Comment>();
                         for (int m = 0; m < projectsJSON.size(); m++) {
                             JSONObject commentJSON = (JSONObject)commentsJSON.get(i);
-                            UUID author = UUID.fromString((String)commentJSON.get("author"));
+                            User author = (User)commentJSON.get("author");
                             String comment = (String)commentJSON.get("comment");
                             String date = (String)commentJSON.get("date");
                             comments.add(new Comment(author, comment));
@@ -149,8 +149,8 @@ public class FileLoader extends FileConstants{
                             if (repliesJSON != null && !repliesJSON.isEmpty())
                             for (int n = 0; n < projectJSON.size(); n++) {
                                 JSONObject replyJSON = (JSONObject)repliesJSON.get(i);
-                                //User authorReply = (User)commentJSON.get("author");
-                                UUID authorReply = UUID.fromString((String)commentJSON.get("author"));
+                                User authorReply = (User)commentJSON.get("author");
+                                //UUID authorReply = UUID.fromString((String)commentJSON.get("author"));
                                 String reply = (String)commentJSON.get("comment");
                                 String dateReply = (String)commentJSON.get("date");
                                 replies.add(new Comment(authorReply, reply));
@@ -169,18 +169,20 @@ public class FileLoader extends FileConstants{
         return null;
     }
     
+    //main method for testing (delete when done testing)
     public static void main(String[] args) {
         ArrayList<User> printUsers = getUsers();
         for (int i = 0; i < printUsers.size(); i++) {
-            System.out.println(printUsers.get(i).getid());
-            System.out.println(printUsers.get(i).getfirstName());
-            System.out.println(printUsers.get(i).getlastName());
-            System.out.println(printUsers.get(i).getuserName());
-            System.out.println(printUsers.get(i).getpassword());
-            System.out.println(printUsers.get(i).getemail());
-            System.out.println(printUsers.get(i).getphoneNum());
+            System.out.println(printUsers.get(i).getID());
+            System.out.println(printUsers.get(i).getFirstName());
+            System.out.println(printUsers.get(i).getLastName());
+            System.out.println(printUsers.get(i).getUserName());
+            System.out.println(printUsers.get(i).getPassword());
+            System.out.println(printUsers.get(i).getEmail());
+            System.out.println(printUsers.get(i).getPhoneNum());
             System.out.println();
         }
+        
         ArrayList<Project> printProjects = getProjects();
         for (int i = 0; i < printProjects.size(); i++) {
             System.out.println(printProjects.get(i).getID());
@@ -190,6 +192,7 @@ public class FileLoader extends FileConstants{
             System.out.println(printProjects.get(i).getColumns());
             System.out.println(printProjects.get(i).getComments());
         }
+        
 
     }
 }

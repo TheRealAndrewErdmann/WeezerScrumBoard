@@ -5,7 +5,6 @@ import java.util.UUID;
 
 public class Comment {
     private User author;
-    private UUID author2;
     private String comment;
     private Date datePosted;
     private ArrayList<Comment> replies;

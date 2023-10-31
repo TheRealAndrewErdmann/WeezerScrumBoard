@@ -16,6 +16,8 @@ public class DataWriter extends FileConstants{
             jsonUsers.add(getUserJSON(users.get(i)));
         }
 
+        //change "userTest.json" to "JSON/user.json" when done testing
+        //also delete userTest.json when done testing
         try (FileWriter file = new FileWriter("userTest.json")) {
 
             file.write(jsonUsers.toJSONString());
@@ -50,7 +52,9 @@ public class DataWriter extends FileConstants{
             jsonProjects.add(getProjectJSON(projects.get(i)));
         }
 
-        try (FileWriter file = new FileWriter("projecttest.json")) {
+        //change "projectTest.json" to "JSON/project.json" when done testing
+        //also delete projectTest.json when done testing
+        try (FileWriter file = new FileWriter("projectTest.json")) {
  
             file.write(jsonProjects.toJSONString());
             file.flush();
@@ -72,6 +76,7 @@ public class DataWriter extends FileConstants{
         return projectInfo;
     }
 
+    //main method for testing (delete when done testing)
     public static void main(String[] args) {
         saveUsers();
         saveProjects();
