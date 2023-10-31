@@ -7,6 +7,10 @@ import org.json.simple.JSONObject;
 
 public class DataWriter extends FileConstants{
 
+    /**
+     * This method adds users to the UserList array list.
+     * @author Alex Dupree
+     */
     public static void saveUsers(){
         UserList userList = UserList.getInstance();
         ArrayList<User> users = userList.getUsers();
@@ -29,6 +33,12 @@ public class DataWriter extends FileConstants{
 
     }
 
+    /**
+     * This method puts the info from the JSON files into a JSONObject map using parallel information from the user class.
+     * @param user the user
+     * @return returns a JSON Object
+     * @author Andrew Erdmann
+     */
     public static JSONObject getUserJSON(User user) {
 		JSONObject userInfo = new JSONObject();
         userInfo.put(ID, user.getID());
@@ -42,7 +52,10 @@ public class DataWriter extends FileConstants{
         return userInfo;
 	}
     
-
+    /**
+     * This method adds a project to the project list
+     * @author Andrew Erdmann
+     */
     public static void saveProjects(){
         ProjectList projectList = ProjectList.getInstance();
         ArrayList<Project> projects = projectList.getProjects();
@@ -64,6 +77,11 @@ public class DataWriter extends FileConstants{
         }
     }
 
+    /**
+     * This method gets information for the project
+     * @param project information is retrieved using this
+     * @return returns a JSONObject called projectInfo which holds all the information for the project
+     */
     public static JSONObject getProjectJSON(Project project) {
         JSONObject projectInfo = new JSONObject();
         projectInfo.put(ID, project.getID());
