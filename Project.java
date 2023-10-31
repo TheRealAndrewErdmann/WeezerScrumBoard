@@ -103,5 +103,4 @@ public class Project {
     public ArrayList<Comment> getComments() {
         return comments;
     }
-
 }

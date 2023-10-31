@@ -34,7 +34,6 @@ public class FileLoader extends FileConstants{
 
             }
 
-            //print statement for testing getUsers
             return users;
         }
 
@@ -70,10 +69,10 @@ public class FileLoader extends FileConstants{
 
                 //Read in hashmap of participants
                 JSONArray participantsJSON = (JSONArray) projectJSON.get("participants");
-                JSONArray usersHashJson = (JSONArray) projectJSON.get("user");
+                //JSONArray usersHashJson = (JSONArray) projectJSON.get("user");
                 for (int j = 0; j < participantsJSON.size(); j++) {
                     JSONObject participantJSON = (JSONObject)participantsJSON.get(i);
-                    JSONObject userListJSON = (JSONObject)usersHashJson.get(i);
+                    //JSONObject userListJSON = (JSONObject)usersHashJson.get(i);
                     Role role = (Role)projectJSON.get("role");
                     User user = (User)projectJSON.get("user");
 
@@ -102,7 +101,7 @@ public class FileLoader extends FileConstants{
                         JSONArray commentsJSON = (JSONArray) projectJSON.get("comments");
                         for (int m = 0; m < tasks.size(); m++) {
                             JSONObject commentJSON = (JSONObject)commentsJSON.get(i);
-                            User author = (User)commentJSON.get("author");
+                            String author = (String)commentJSON.get("author");
                             String comment = (String)commentJSON.get("comment");
                             String date = (String)commentJSON.get("date");
                             taskComments.add(new Comment(author, comment));
@@ -110,7 +109,7 @@ public class FileLoader extends FileConstants{
                             JSONArray repliesJSON = (JSONArray) projectJSON.get("replies");
                             for (int n = 0; n < tasks.size(); n++) {
                                 JSONObject replyJSON = (JSONObject)repliesJSON.get(i);
-                                User authorReply = (User)commentJSON.get("author");
+                                String authorReply = (String)commentJSON.get("author");
                                 String reply = (String)commentJSON.get("comment");
                                 String dateReply = (String)commentJSON.get("date");
                                 taskReplies.add(new Comment(authorReply, reply));
@@ -140,7 +139,7 @@ public class FileLoader extends FileConstants{
                 ArrayList<Comment> replies = new ArrayList<Comment>();
                         for (int m = 0; m < projectsJSON.size(); m++) {
                             JSONObject commentJSON = (JSONObject)commentsJSON.get(i);
-                            User author = (User)commentJSON.get("author");
+                            String author = (String)commentJSON.get("author");
                             String comment = (String)commentJSON.get("comment");
                             String date = (String)commentJSON.get("date");
                             comments.add(new Comment(author, comment));
@@ -149,7 +148,7 @@ public class FileLoader extends FileConstants{
                             if (repliesJSON != null && !repliesJSON.isEmpty())
                             for (int n = 0; n < projectJSON.size(); n++) {
                                 JSONObject replyJSON = (JSONObject)repliesJSON.get(i);
-                                User authorReply = (User)commentJSON.get("author");
+                                String authorReply = (String)commentJSON.get("author");
                                 //UUID authorReply = UUID.fromString((String)commentJSON.get("author"));
                                 String reply = (String)commentJSON.get("comment");
                                 String dateReply = (String)commentJSON.get("date");
@@ -184,6 +183,7 @@ public class FileLoader extends FileConstants{
         }
         
         ArrayList<Project> printProjects = getProjects();
+
         for (int i = 0; i < printProjects.size(); i++) {
             System.out.println(printProjects.get(i).getID());
             System.out.println(printProjects.get(i).getTitle());
@@ -191,7 +191,9 @@ public class FileLoader extends FileConstants{
             System.out.println(printProjects.get(i).getParticipants());
             System.out.println(printProjects.get(i).getColumns());
             System.out.println(printProjects.get(i).getComments());
+            System.out.println();
         }
+
         
 
     }
