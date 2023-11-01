@@ -1,0 +1,14 @@
+Electric Missles - Make electric missles
+
+Role		Particpants
+
+
+Columns		Tasks
+
+To Do		
+Doing		Initialize super algorithm to detonate at warp speed
+Complete		
+Abandoned		
+
+Comments
+

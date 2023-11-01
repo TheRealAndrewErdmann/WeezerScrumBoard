@@ -46,7 +46,7 @@ public class Project {
         participants.get(role).add(user);
         return true;
     }
-    */
+    
 
     public boolean removeParticipant(User user, Role role) {
         if(user == null || role == null)
