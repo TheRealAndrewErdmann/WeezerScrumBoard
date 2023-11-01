@@ -9,6 +9,7 @@ public class Task {
     private Category category;
     private String priority;
     private String status;
+    private User taskOwner;
     private ArrayList<Comment> comments;
     private ArrayList<Change> changes;
     /**
@@ -20,8 +21,9 @@ public class Task {
      * @param priority The priority level of the task
      * @author Shiv Patel
      */
-    public Task(Project project, String taskName, String taskDescription, Category category, String priority){
+    public Task(Project project, User taskOwner, String taskName, String taskDescription, Category category, String priority){
         this.project = project;
+        this.taskOwner = taskOwner;
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.category = category;
@@ -38,6 +40,7 @@ public class Task {
     public boolean changeStatus(String newStatus){
         if(status == null)
             return false;
+        changes.add(new Change("Changed status from "+status+" to "+newStatus, taskOwner));
         return project.changeTaskStatus(this, status, newStatus);
     }
     /**
@@ -50,6 +53,7 @@ public class Task {
         if(description == null)
             return false;
         taskDescription = description;
+        changes.add(new Change("Changed description from "+taskDescription+" to "+description, taskOwner));
         return true;
     }
     /**
@@ -60,6 +64,7 @@ public class Task {
     public boolean changePriority(String priority){
         if(priority == null)
             return false;
+        changes.add(new Change("Changed priority from "+this.priority+" to "+priority, taskOwner));
         this.priority = priority;
         return true;
     }
@@ -82,6 +87,7 @@ public class Task {
     public boolean setStatus(String status) {
         if(status == null)
             return false;
+        changes.add(new Change("Set status to "+status, taskOwner));
         this.status = status;
         return true;
     }
