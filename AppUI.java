@@ -22,6 +22,7 @@ public class AppUI {
 
         System.out.println("Which project would you like to view?");
         PMSoftware.showAllProjects();
+        System.out.println("----Viewing Electric Missiles----");
     }
 
     public static void main(String[] args) {

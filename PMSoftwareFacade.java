@@ -7,6 +7,7 @@ public class PMSoftwareFacade {
     private Project project1;
     private Project project2;
     private Project project3;
+    private Column column1;
     private ArrayList<Project> proj;
 
     public PMSoftwareFacade() {

@@ -9,14 +9,14 @@ public class Project {
     private UUID id;
     private String title;
     private String description;
-    private Map<Role,ArrayList<User>> participants;
+    private Map<String,ArrayList<User>> participants;
     private ArrayList<Column> columns;
     private ArrayList<Comment> comments;
     
     public Project(String title, String description){
         this.title = title;
         this.description = description;
-        this.participants = new HashMap<Role, ArrayList<User>>();
+        this.participants = new HashMap<String, ArrayList<User>>();
         this.columns = new ArrayList<Column>();
         this.comments = new ArrayList<Comment>();
     }
@@ -26,7 +26,7 @@ public class Project {
         this.id = id;
     }
 
-    public Project(UUID id, String title, String description, Map<Role, ArrayList<User>> participants, ArrayList<Column> columns, ArrayList<Comment> comments) {
+    public Project(UUID id, String title, String description, Map<String, ArrayList<User>> participants, ArrayList<Column> columns, ArrayList<Comment> comments) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -35,11 +35,13 @@ public class Project {
         this.comments = comments;
     }
 
+    /* 
     public boolean addParticipant(User user, Role role) {
         if(user == null || role == null)
             return false;
         return participants.get(role).add(user);
     }
+    */
 
     public boolean removeParticipant(User user, Role role) {
         if(user == null || role == null)
@@ -47,6 +49,7 @@ public class Project {
         return participants.get(role).remove(user);
     }
 
+    /* 
     public boolean changeRole(User user, Role curRole, Role newRole) {
         if(user == null || curRole == null || newRole == null)
             return false;
@@ -54,6 +57,7 @@ public class Project {
             return false;
         return participants.get(newRole).add(user);
     }
+    */
 
     public boolean addTask(Task task, String status) {
         if(task == null || status == null)
@@ -101,7 +105,7 @@ public class Project {
     public String getDescription() {
         return description;
     }
-    public Map<Role, ArrayList<User>> getParticipants() {
+    public Map<String, ArrayList<User>> getParticipants() {
         return participants;
     }
     public ArrayList<Column> getColumns() {

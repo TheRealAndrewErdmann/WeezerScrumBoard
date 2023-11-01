@@ -2,6 +2,7 @@
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -52,7 +53,8 @@ public class FileLoader extends FileConstants{
         ArrayList<Comment> taskReplies = new ArrayList<Comment>();
         ArrayList<Change> changes = new ArrayList<Change>();
         ArrayList<User> userlist = new ArrayList<User>();
-        Map<Role, ArrayList<User>> participantsMap = new HashMap<Role, ArrayList<User>>();
+        //ArrayList<String> userslist = new ArrayList<String>();
+        Map<String, ArrayList<User>> participantsMap = new HashMap<String, ArrayList<User>>();
 
 
         try {
@@ -71,48 +73,55 @@ public class FileLoader extends FileConstants{
                 JSONArray participantsJSON = (JSONArray) projectJSON.get("participants");
                 //JSONArray usersHashJson = (JSONArray) projectJSON.get("user");
                 for (int j = 0; j < participantsJSON.size(); j++) {
-                    JSONObject participantJSON = (JSONObject)participantsJSON.get(i);
+                    JSONObject participantJSON = (JSONObject)participantsJSON.get(j);
                     //JSONObject userListJSON = (JSONObject)usersHashJson.get(i);
-                    Role role = (Role)projectJSON.get("role");
-                    User user = (User)projectJSON.get("user");
+                    String role = (String)participantJSON.get("role");
+                    //for (int x = 0; x < participantsJSON.size(); x++) {
+                        //userslist.add((String) participantsJSON.get(x));
+                    //}
+                    //JSONArray users = (JSONArray)participantJSON.get("user");
+                    //userslist.add(user);
 
-                    userlist.add(user);
+                    //userlist.add(user);
+                    //for (int o = 0; o < userlist.size(); o++) {
+                    //    System.out.println(userlist.get(o).getFirstName());
+                    //}
                     participantsMap.put(role, userlist);
                 }
 
                 //Read in the array of columns
                 JSONArray columnsJSON = (JSONArray) projectJSON.get("columns");
-                for (int k = 0; k < columns.size(); k++) {
-                    JSONObject columnJSON = (JSONObject)columnsJSON.get(i);
+                for (int k = 0; k < columnsJSON.size(); k++) {
+                    JSONObject columnJSON = (JSONObject)columnsJSON.get(k);
                     String columnName = (String)columnJSON.get("columnName");
 
                     //Read in the array of tasks in each column
                     ArrayList<Task> tasks = new ArrayList<Task>();
-                    Project temp = new Project("title", "description");
                     JSONArray tasksJSON = (JSONArray) projectJSON.get("task");
                     for (int l = 0; l < tasks.size(); l++) {
-                        JSONObject taskJSON = (JSONObject)columnsJSON.get(i);
+                        JSONObject taskJSON = (JSONObject)tasksJSON.get(l);
                         UUID idTask = UUID.fromString((String)taskJSON.get("id"));
-                        String taskName = (String)columnJSON.get("taskName");
-                        String taskDescription = (String)columnJSON.get("taskDescription");
-                        Category category = (Category)columnJSON.get("category");
-                        Priority priority = (Priority)columnJSON.get("priority");
+                        String taskName = (String)taskJSON.get("taskName");
+                        String taskDescription = (String)taskJSON.get("taskDescription");
+                        Category category = (Category)taskJSON.get("category");
+                        String priority = (String)taskJSON.get("priority");
                     
                         //Read in the array of comments and replies on each task
-                        JSONArray commentsJSON = (JSONArray) projectJSON.get("comments");
-                        for (int m = 0; m < tasks.size(); m++) {
-                            JSONObject commentJSON = (JSONObject)commentsJSON.get(i);
-                            String author = (String)commentJSON.get("author");
-                            String comment = (String)commentJSON.get("comment");
-                            String date = (String)commentJSON.get("date");
+                        //ArrayList<Comment> taskComments = new ArrayList<Comment>();
+                        JSONArray taskCommentsJSON = (JSONArray) projectJSON.get("comments");
+                        for (int m = 0; m < taskComments.size(); m++) {
+                            JSONObject taskCommentJSON = (JSONObject)taskCommentsJSON.get(i);
+                            String author = (String)taskCommentJSON.get("author");
+                            String comment = (String)taskCommentJSON.get("comment");
+                            String date = (String)taskCommentJSON.get("date");
                             taskComments.add(new Comment(author, comment));
 
-                            JSONArray repliesJSON = (JSONArray) projectJSON.get("replies");
+                            JSONArray taskRepliesJSON = (JSONArray) projectJSON.get("replies");
                             for (int n = 0; n < tasks.size(); n++) {
-                                JSONObject replyJSON = (JSONObject)repliesJSON.get(i);
-                                String authorReply = (String)commentJSON.get("author");
-                                String reply = (String)commentJSON.get("comment");
-                                String dateReply = (String)commentJSON.get("date");
+                                JSONObject taskReplyJSON = (JSONObject)taskRepliesJSON.get(i);
+                                String authorReply = (String)taskReplyJSON.get("author");
+                                String reply = (String)taskReplyJSON.get("comment");
+                                String dateReply = (String)taskReplyJSON.get("date");
                                 taskReplies.add(new Comment(authorReply, reply));
                             }
 
@@ -126,7 +135,7 @@ public class FileLoader extends FileConstants{
                             }
                             
                         }
-                        tasks.add(new Task(temp, taskName, taskDescription, category, priority));
+                        tasks.add(new Task((Project)projectsJSON.get(i),taskName, taskDescription, category, priority));
 
                     }
 
@@ -134,25 +143,19 @@ public class FileLoader extends FileConstants{
                     columns.add(new Column(columnName, status));
                 }
 
-                //print out columns for testing
-                for (int n = 0; n < columns.size(); n++) {
-                    System.out.println(columns.get(n).getColumnName());
-                    System.out.println(columns.get(n).getTasks());
-                    System.out.println(columns.get(n).getStatus());
-                }
-
                 //read in the array of comments and replies for projects
                 JSONArray commentsJSON = (JSONArray) projectJSON.get("comments");
                 ArrayList<Comment> comments = new ArrayList<Comment>();
                 ArrayList<Comment> replies = new ArrayList<Comment>();
                         for (int m = 0; m < projectsJSON.size(); m++) {
-                            JSONObject commentJSON = (JSONObject)commentsJSON.get(i);
+                            JSONObject commentJSON = (JSONObject)commentsJSON.get(m);
                             String author = (String)commentJSON.get("author");
                             String comment = (String)commentJSON.get("comment");
                             String date = (String)commentJSON.get("date");
                             comments.add(new Comment(author, comment));
 
                             JSONArray repliesJSON = (JSONArray) projectJSON.get("replies");
+                            //checks if replies array list is empty
                             if (repliesJSON != null && !repliesJSON.isEmpty())
                             for (int n = 0; n < projectJSON.size(); n++) {
                                 JSONObject replyJSON = (JSONObject)repliesJSON.get(i);
@@ -190,18 +193,26 @@ public class FileLoader extends FileConstants{
             System.out.println();
         }
         
-        ///* 
+        // /* 
         ArrayList<Project> printProjects = new ArrayList<Project>();
         printProjects = getProjects();
         ArrayList<Comment> printComments;
+        ArrayList<Column> printColumn;
         for (int i = 0; i < printProjects.size(); i++) {
             System.out.println(printProjects.get(i).getID());
             System.out.println(printProjects.get(i).getTitle());
             System.out.println(printProjects.get(i).getDescription());
             System.out.println(printProjects.get(i).getParticipants());
             System.out.println(printProjects.get(i).getColumns());
+
+            printColumn = printProjects.get(i).getColumns();
+            for (int k = 0; k < printColumn.size(); k++) {
+                System.out.println(printColumn.get(k).getColumnName());
+            }
+
             System.out.println(printProjects.get(i).getComments());
             printComments = printProjects.get(i).getComments();
+
             for (int j = 0; j < printComments.size(); j++) {
                 System.out.println(printComments.get(j).getComment());
             }
