@@ -23,7 +23,6 @@
                 "comments": [{
                     "author": "1705d671-8135-4e85-aa71-ba463dd9e881",
                     "comment": "The link should be separated from the rest of the text for readability.",
-                    "date": "2022-03-22",
                     "replies": []
                 }],
                 "changes": []
@@ -64,7 +63,6 @@
         "comments": [{
             "author": "23979fce-f352-48fc-8d29-099c788596f6",
             "comment": "Should the bot have some kind of unique personality?",
-            "date": "2022-03-24",
             "replies": []
         }] 
     }

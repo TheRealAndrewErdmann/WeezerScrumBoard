@@ -35,21 +35,19 @@ public class Project {
         this.comments = comments;
     }
 
-    /* 
+    
     public boolean addParticipant(User user, Role role) {
         if(user == null || role == null)
             return false;
         return participants.get(role).add(user);
     }
-    */
-
+    
     public boolean removeParticipant(User user, Role role) {
         if(user == null || role == null)
             return false;
         return participants.get(role).remove(user);
     }
-
-    /* 
+    
     public boolean changeRole(User user, Role curRole, Role newRole) {
         if(user == null || curRole == null || newRole == null)
             return false;
@@ -57,7 +55,6 @@ public class Project {
             return false;
         return participants.get(newRole).add(user);
     }
-    */
 
     public boolean addTask(Task task, String status) {
         if(task == null || status == null)

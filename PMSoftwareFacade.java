@@ -13,7 +13,8 @@ public class PMSoftwareFacade {
     public PMSoftwareFacade() {
         userList = UserList.getInstance();
         projectList = ProjectList.getInstance();
-        //proj = projectList.getProjects();
+        proj = projectList.getProjects();
+        /* 
         proj = new ArrayList<Project>();
         project1 = new Project("Electric Missles", "Make electric missles");
         project2 = new Project("Soap Free Washers", "Make washers soap free");
@@ -21,6 +22,7 @@ public class PMSoftwareFacade {
         proj.add(project1);
         proj.add(project2);
         proj.add(project3);
+        */
     }
 
     public User login(String username, String password) {
