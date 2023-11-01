@@ -9,7 +9,16 @@ public class User {
     private String password;
     private String email;
     private String phoneNum;
-
+    /**
+     * Constructs a new User object with the specified user information.
+     * @param firstName The first name of the user
+     * @param lastName The last name of the user
+     * @param userName The username chosen by the user
+     * @param password The password chosen by the user
+     * @param email The email address provided by the user
+     * @param phoneNum The phone number provided by the user
+     * @author Shiv Patel
+     */
     public User(String firstName, String lastName, String userName, String password,
                 String email, String phoneNum) {
         this.firstName = firstName;
