@@ -21,9 +21,8 @@ public class Task {
      * @param priority The priority level of the task
      * @author Shiv Patel
      */
-    public Task(Project project, User taskOwner, String taskName, String taskDescription, Category category, String priority){
+    public Task(Project project, String taskName, String taskDescription, Category category, String priority){
         this.project = project;
-        this.taskOwner = taskOwner;
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.category = category;
@@ -89,6 +88,13 @@ public class Task {
             return false;
         changes.add(new Change("Set status to "+status, taskOwner));
         this.status = status;
+        return true;
+    }
+
+    public boolean setTaskOwner(User taskOwner) {
+        if(taskOwner == null || this.taskOwner != null)
+            return false;
+        this.taskOwner = taskOwner;
         return true;
     }
 
