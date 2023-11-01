@@ -1,4 +1,3 @@
-import java.util.Date;
 
 public class Change {
     private String changeDescription;
