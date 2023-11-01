@@ -125,7 +125,7 @@ public class FileLoader extends FileConstants{
                             }
                             
                         }
-                        tasks.add(new Task(taskName, taskDescription, category, priority));
+                        tasks.add(new Task((Project)projectsJSON.get(i),taskName, taskDescription, category, priority));
 
                     }
 

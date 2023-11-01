@@ -7,7 +7,7 @@ public class Task {
     private String taskName;
     private String taskDescription;
     private Category category;
-    private Priority priority;
+    private String priority;
     private String status;
     private ArrayList<Comment> comments;
     private ArrayList<Change> changes;
@@ -20,7 +20,7 @@ public class Task {
      * @param priority The priority level of the task
      * @author Shiv Patel
      */
-    public Task(Project project, String taskName, String taskDescription, Category category, Priority priority){
+    public Task(Project project, String taskName, String taskDescription, Category category, String priority){
         this.project = project;
         this.taskName = taskName;
         this.taskDescription = taskDescription;
@@ -57,7 +57,7 @@ public class Task {
      * @param priority The new priority to set. Must not be null
      * @return True if the priority was successfully changed; false otherwise
      */
-    public boolean changePriority(Priority priority){
+    public boolean changePriority(String priority){
         if(priority == null)
             return false;
         this.priority = priority;
@@ -84,5 +84,9 @@ public class Task {
             return false;
         this.status = status;
         return true;
+    }
+
+    public ArrayList<Change> getChanges() {
+        return changes;
     }
 }

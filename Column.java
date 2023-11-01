@@ -11,27 +11,16 @@ public class Column {
     }
 
     public boolean addTask(Task task) {
-        if (tasks.add(task)) {
-            return true;
-        }
-        else if (task == null) {
+        if(task == null)
             return false;
-        }
-        else {
-            return false;
-        }
+        return tasks.add(task);
     }
 
     public boolean removeTask(Task task) {
-        if (tasks.remove(task)) {
-            return true;
-        }
-        else if (task == null) {
+        if(task == null)
             return false;
-        }
-        else {
-            return false;
-        }
+        return tasks.remove(task);
+
     }
 
     public String getColumnName() {
