@@ -61,6 +61,7 @@ public class Project {
         for(Column column : columns) {
             if(column.getColumnName().equals(status)){
                 column.addTask(task);
+                task.setStatus(status);
                 return true;
             }
         }
