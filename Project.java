@@ -54,7 +54,7 @@ public class Project {
         return participants.get(role).remove(user);
     }
 
-    /* 
+    
     public boolean changeRole(User user, Role curRole, Role newRole) {
         if(user == null || curRole == null || newRole == null)
             return false;
@@ -62,7 +62,7 @@ public class Project {
             return false;
         return participants.get(newRole).add(user);
     }
-    */
+    
 
     public boolean addTask(Task task, String status) {
         if(task == null || status == null)
@@ -122,7 +122,10 @@ public class Project {
                 newFile.write(column.getColumnName()+"\t\t");
 
                 for(Task task : column.getTasks()) {
-                    newFile.write(task.getTaskName());
+                    newFile.write(task.getTaskName()+" - ");
+                    for(Comment comment : task.getComments()) {
+                        newFile.write(comment.getComment()+" posted by"+comment.getAuthor()+"\n");
+                    }
                 }
                 newFile.write("\n");
             }

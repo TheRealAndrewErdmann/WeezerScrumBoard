@@ -106,6 +106,10 @@ public class Task {
         return changes;
     }
 
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
+
     public String getTaskName() {
         return taskName;
     }

@@ -40,7 +40,7 @@ public class AppUI {
         Comment avoid = new Comment("Atticus Madden", "Avoid civllians Jeff!");
         initialize.addComment(avoid);
         Comment reply = new Comment("Atticus Madden", "How about you do it jeff.");
-        PMSoftware.findProject("Electrical Missiles").changeTaskStatus(cylinder, "To Do", "To Do");
+        //PMSoftware.findProject("Electrical Missiles").changeTaskStatus(cylinder, "To Do", "To Do");
         PMSoftware.findProject("Electrical Missiles").changeTaskStatus(cylinder, "To Do", "Doing");
         found.print();
     }
