@@ -1,43 +1,35 @@
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.UUID;
 
 public class Comment {
     private String author;
     private String comment;
-    private Date datePosted;
     private ArrayList<Comment> replies;
 
-    public Comment (String user, String comment) {
-        author = user;
+    public Comment (String author, String comment) {
+        this.author = author;
         this.comment = comment;
     }
 
     public boolean updateComment(String comment) {
+        if(comment == null)
+            return false;
         this.comment = comment;
-        if (this.comment == comment) {
-            return true;
-        }
-        else {
-            return false;
-        }
-
+        return true;
     }
-    public boolean replyToComment (Comment reply) {
-        if (replies.add(reply)) {
-            return true;
-        }
-        else if (reply == null) {
+
+    public boolean replyToComment(Comment reply) {
+        if(reply == null)
             return false;
-        }
-        else {
-            return false;
-        }
+        return replies.add(reply);
     }
     
     public String getComment() {
         return comment;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
 }
