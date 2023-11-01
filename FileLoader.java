@@ -9,26 +9,26 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;;
 
-public class FileLoader extends FileConstants{   
+public class FileLoader extends FileConstants{  
 
     public static ArrayList<User> getUsers() {
 
         ArrayList<User> users =  new ArrayList<User>();
 
         try {
-			FileReader reader = new FileReader("JSON/user.json");
+			FileReader reader = new FileReader("JSON/scenarioUsers.json");
 			JSONParser parser = new JSONParser();
 			JSONArray usersJSON = (JSONArray)new JSONParser().parse(reader);
 
             for (int i = 0; i < usersJSON.size(); i++) {
                 JSONObject userJSON = (JSONObject)usersJSON.get(i);
                 UUID id = UUID.fromString((String)userJSON.get("id"));
-                String firstName = (String)userJSON.get("firstName");
-                String lastName = (String)userJSON.get("lastName");
-                String userName = (String)userJSON.get("userName");
+                String firstName = (String)userJSON.get("first-name");
+                String lastName = (String)userJSON.get("last-name");
+                String userName = (String)userJSON.get("user-name");
                 String password = (String)userJSON.get("password");
                 String email    = (String)userJSON.get("email");
-                String phoneNum = (String)userJSON.get("phoneNum");
+                String phoneNum = (String)userJSON.get("phone-number");
 
                 users.add(new User(id, firstName, lastName, userName, password, email, phoneNum));
 
@@ -88,6 +88,7 @@ public class FileLoader extends FileConstants{
 
                     //Read in the array of tasks in each column
                     ArrayList<Task> tasks = new ArrayList<Task>();
+                    Project temp = new Project("title", "description");
                     JSONArray tasksJSON = (JSONArray) projectJSON.get("task");
                     for (int l = 0; l < tasks.size(); l++) {
                         JSONObject taskJSON = (JSONObject)columnsJSON.get(i);
@@ -95,7 +96,7 @@ public class FileLoader extends FileConstants{
                         String taskName = (String)columnJSON.get("taskName");
                         String taskDescription = (String)columnJSON.get("taskDescription");
                         Category category = (Category)columnJSON.get("category");
-                        String priority = (String)columnJSON.get("priority");
+                        Priority priority = (Priority)columnJSON.get("priority");
                     
                         //Read in the array of comments and replies on each task
                         JSONArray commentsJSON = (JSONArray) projectJSON.get("comments");
@@ -125,12 +126,19 @@ public class FileLoader extends FileConstants{
                             }
                             
                         }
-                        tasks.add(new Task(taskName, taskDescription, category, priority));
+                        tasks.add(new Task(temp, taskName, taskDescription, category, priority));
 
                     }
 
                     String status = (String)columnJSON.get("status");
                     columns.add(new Column(columnName, status));
+                }
+
+                //print out columns for testing
+                for (int n = 0; n < columns.size(); n++) {
+                    System.out.println(columns.get(n).getColumnName());
+                    System.out.println(columns.get(n).getTasks());
+                    System.out.println(columns.get(n).getStatus());
                 }
 
                 //read in the array of comments and replies for projects
@@ -182,8 +190,10 @@ public class FileLoader extends FileConstants{
             System.out.println();
         }
         
-        ArrayList<Project> printProjects = getProjects();
-
+        ///* 
+        ArrayList<Project> printProjects = new ArrayList<Project>();
+        printProjects = getProjects();
+        ArrayList<Comment> printComments;
         for (int i = 0; i < printProjects.size(); i++) {
             System.out.println(printProjects.get(i).getID());
             System.out.println(printProjects.get(i).getTitle());
@@ -191,8 +201,18 @@ public class FileLoader extends FileConstants{
             System.out.println(printProjects.get(i).getParticipants());
             System.out.println(printProjects.get(i).getColumns());
             System.out.println(printProjects.get(i).getComments());
+            printComments = printProjects.get(i).getComments();
+            for (int j = 0; j < printComments.size(); j++) {
+                System.out.println(printComments.get(j).getComment());
+            }
             System.out.println();
         }
+        // */
+
+        //ArrayList<Task> printTasks =
+        //for (int i = 0; i < columns.size(); i++){
+
+        //}
 
         
 

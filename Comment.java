@@ -36,4 +36,8 @@ public class Comment {
         }
     }
     
+    public String getComment() {
+        return comment;
+    }
+
 }

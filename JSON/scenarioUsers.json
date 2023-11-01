@@ -1,0 +1,31 @@
+[
+    {
+        "id": "23979fce-f352-48fc-8d29-099c788596f6",
+        "first-name": "Atticus",
+        "last-name": "Madden",
+        "user-name": "Amadden",
+        "password": "EK8g69Dk$G3",
+        "email": "amadden@gmail.com",
+        "phone-number": "803-730-4872"
+    },
+
+    {
+        "id": "11d10e03-1222-4472-9ac1-6213ea0cf564",
+        "first-name": "Jeff",
+        "last-name": "Goldblum",
+        "usern-name": "Jgoldblum",
+        "password": "3wb3wN4^KD2",
+        "email": "jgoldblum@gmail.com",
+        "phone-number": "803-826-9943"
+    },
+
+    {
+        "id": "9af1ab01-d76b-4df7-8ea2-04abd1c3194f",
+        "first-name": "Atticus",
+        "last-name": "Finch",
+        "user-name": "Afinch",
+        "password": "password",
+        "email": "afinch@gmail.com",
+        "phone-number": "803-747-3250"
+    }
+]

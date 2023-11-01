@@ -7,9 +7,11 @@ public class Column {
 
     public Column(String name, String status) {
         columnName = name;
+        this.tasks = new ArrayList<Task>();
         this.status.add(status);
     }
 
+    //adds a task to task list
     public boolean addTask(Task task) {
         if (tasks.add(task)) {
             return true;
@@ -22,6 +24,7 @@ public class Column {
         }
     }
 
+    //removes a task from task list
     public boolean removeTask(Task task) {
         if (tasks.remove(task)) {
             return true;
@@ -36,5 +39,13 @@ public class Column {
 
     public String getColumnName() {
         return columnName;
+    }
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
+
+    public ArrayList<String> getStatus() {
+        return status;
     }
 }

@@ -86,6 +86,12 @@ public class Project {
         return comments.add(comment);
     }
 
+    public boolean addColumn(Column column) {
+        if(column == null)
+            return false;
+        return columns.add(column);
+    }
+
     public UUID getID() {
         return id;
     }

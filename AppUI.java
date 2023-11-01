@@ -1,23 +1,31 @@
 import java.util.ArrayList;
 
 public class AppUI {
-    private UserList userlist;
-    private ProjectList projectList;
-    private PMSoftwareFacade app;
+    //private UserList userlist;
+    //private ProjectList projectList;
+    private PMSoftwareFacade PMSoftware;
+    private Project temp;
 
     AppUI() {
-        app = new PMSoftwareFacade();
+        PMSoftware = new PMSoftwareFacade();
     }
 
     public void run() {
-        app.showAllProjects();
+        PMSoftware.showAllProjects();
     }
 
     public void scenario() {
 
+        System.out.println("Welcome to Code Mission Possible"); 
+        System.out.println("-----------Logging in-----------");       
         System.out.println("Welcome Atticus Madden");
 
         System.out.println("Which project would you like to view?");
-        app.showAllProjects();
+        PMSoftware.showAllProjects();
+    }
+
+    public static void main(String[] args) {
+        AppUI app = new AppUI();
+        app.scenario();
     }
 }
