@@ -164,7 +164,7 @@ public class FileLoader extends FileConstants{
                                 replies.add(new Comment(authorReply, reply));
                             }
                         }
-                        projects.add(new Project(id, title, description, participantsMap, columns, tasks, comments));
+                        projects.add(new Project(id, title, description, participantsMap, columns, comments));
             }
             return projects;
         }   
@@ -209,11 +209,13 @@ public class FileLoader extends FileConstants{
                 System.out.println(printColumn.get(k).getColumnName());
             }
 
+            /*
             System.out.println(printProjects.get(i).getTasks());
             printTask = printProjects.get(i).getTasks();
             for (int b = 0; b < printTask.size(); b++) {
                 System.out.println(printTask.get(b).getTaskName());
             }
+            */
 
             System.out.println(printProjects.get(i).getComments());
             printComments = printProjects.get(i).getComments();

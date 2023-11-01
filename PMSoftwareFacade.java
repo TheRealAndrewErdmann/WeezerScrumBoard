@@ -8,25 +8,41 @@ public class PMSoftwareFacade {
     private Project project2;
     private Project project3;
     private Column column1;
+    private Column column2;
+    private Column column3; 
     private ArrayList<Project> proj;
 
     public PMSoftwareFacade() {
         userList = UserList.getInstance();
         projectList = ProjectList.getInstance();
-        proj = projectList.getProjects();
-        /* 
+        //proj = projectList.getProjects();
+        
         proj = new ArrayList<Project>();
         project1 = new Project("Electric Missles", "Make electric missles");
         project2 = new Project("Soap Free Washers", "Make washers soap free");
         project3 = new Project("Air Computers", "Make air computers");
         proj.add(project1);
+        Column column1 = new Column("To Do", "Incomplete");
+        Column column2 = new Column("Doing", "Incomplete");
+        Column column3 = new Column("Complete", "Complete");
+        Task cylinder = new Task(project1, "Curve the metal to make a cylindrical shape",
+                                 "description", Category.Feature, "High");
+        Comment cylindrical = new Comment("Jeff Goldblum", "Not cyclindrical enough");
+        Comment question = new Comment("Atticus Finch", "What's a cylinder?");
+        project1.addTask(cylinder, "Incomplete");
+        project1.addColumn(column1);
+        project1.addColumn(column2);
+        project1.addColumn(column3);
+        cylinder.addComment(cylindrical);
+        cylinder.addComment(question);
         proj.add(project2);
         proj.add(project3);
-        */
+        
     }
 
     public User login(String username, String password) {
-        return null;
+        return new User("Atticus", "Madden", "Amadden", "password",
+                    "amadden@gmail.com", "803-730-4872");
     }
 
     public User signup(String username, String password,String email, String phoneNumber) {
@@ -34,17 +50,16 @@ public class PMSoftwareFacade {
     }
 
     public Project createProject(String title, String description) {
-
         return null;
     }
 
     public Project findProject(String projectName) {
         for (int i = 0; i < proj.size(); i++) {
-            if (projectName == proj.get(i).getTitle()) {
-                return projectList.getProject(projectName);
-            }
+            //if (projectName == proj.get(i).getTitle()) {
+                return proj.get(i);
+            //}
         }
-        return projectList.getProject(projectName);
+        return null;
     }
 
     public void showAllProjects(){
@@ -57,6 +72,10 @@ public class PMSoftwareFacade {
         ArrayList<Column> columns = project.getColumns();
         for (int i = 0; i < columns.size(); i++) {
             System.out.println(columns.get(i).getColumnName());
+            ArrayList<Task> tasks = columns.get(i).getTasks();
+            for (int j = 0; j < tasks.size(); j++) {
+                System.out.println(tasks.get(j).getTaskName());
+            }
         }
     }
 
