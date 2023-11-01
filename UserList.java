@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class UserList {
     private static UserList userList = null;
-    private static ArrayList<User> users;
+    private ArrayList<User> users;
 
     private UserList(){
         users = FileLoader.getUsers();

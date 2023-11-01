@@ -31,7 +31,7 @@ public class DataWriter extends FileConstants{
 
     public static JSONObject getUserJSON(User user) {
 		JSONObject userInfo = new JSONObject();
-        userInfo.put(ID, user.getID());
+        userInfo.put(ID, user.getID().toString());
 		userInfo.put(FIRST_NAME, user.getFirstName());
 		userInfo.put(LAST_NAME, user.getLastName());
 		userInfo.put(USER_NAME, user.getUserName());
@@ -66,7 +66,7 @@ public class DataWriter extends FileConstants{
 
     public static JSONObject getProjectJSON(Project project) {
         JSONObject projectInfo = new JSONObject();
-        projectInfo.put(ID, project.getID());
+        projectInfo.put(ID, project.getID().toString());
         projectInfo.put(TITLE, project.getTitle());
         projectInfo.put(DESCRIPTION, project.getDescription());
         projectInfo.put(PARTICIPANTS, project.getParticipants());
@@ -79,7 +79,7 @@ public class DataWriter extends FileConstants{
     //main method for testing (delete when done testing)
     public static void main(String[] args) {
         saveUsers();
-        //saveProjects();
+        saveProjects();
     }
 
 }

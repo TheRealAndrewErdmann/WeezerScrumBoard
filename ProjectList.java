@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class ProjectList {
 
     private static ProjectList projectList = null;
-    private static ArrayList<Project> projects;
+    private ArrayList<Project> projects;
     
     private ProjectList() {
         projects = FileLoader.getProjects();
