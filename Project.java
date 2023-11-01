@@ -1,5 +1,7 @@
 
 import java.util.Map;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.HashMap;
@@ -35,13 +37,16 @@ public class Project {
         this.comments = comments;
     }
 
-    /* 
-    public boolean addParticipant(User user, Role role) {
+
+    public boolean addParticipant(User user, String role) {
         if(user == null || role == null)
             return false;
-        return participants.get(role).add(user);
+        if(participants.get(role) == null)
+            participants.put(role, new ArrayList<User>());
+        participants.get(role).add(user);
+        return true;
     }
-    */
+
 
     public boolean removeParticipant(User user, Role role) {
         if(user == null || role == null)
@@ -49,7 +54,7 @@ public class Project {
         return participants.get(role).remove(user);
     }
 
-    /* 
+    
     public boolean changeRole(User user, Role curRole, Role newRole) {
         if(user == null || curRole == null || newRole == null)
             return false;
@@ -57,7 +62,7 @@ public class Project {
             return false;
         return participants.get(newRole).add(user);
     }
-    */
+
 
     public boolean addTask(Task task, String status) {
         if(task == null || status == null)
@@ -95,6 +100,40 @@ public class Project {
             return false;
         return columns.add(column);
     }
+
+    public void print() {
+	    try {
+		    FileWriter newFile = new FileWriter("scrum.txt");
+			newFile.write(title + " - "+description+"\n\n");
+            newFile.write("Role\t\tParticpants\n\n");
+
+            for(String role : participants.keySet()) {
+                newFile.write(role+"\t\t");
+
+                for(User user : participants.get(role)) {
+                    newFile.write(user.getFirstName()+" ");
+                }
+                newFile.write("\n");
+            }
+
+             newFile.write("\nColumns\t\tTasks\n\n");
+
+            for(Column column : columns) {
+                newFile.write(column.getColumnName()+"\t\t");
+
+                for(Task task : column.getTasks()) {
+                    newFile.write(task.getTaskName());
+                }
+                newFile.write("\n");
+            }
+
+			newFile.close();
+				
+		} catch (IOException e) {
+			System.out.println("Error creating file");
+			return;
+		}	
+	}
 
     public UUID getID() {
         return id;
