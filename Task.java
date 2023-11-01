@@ -90,7 +90,11 @@ public class Task {
         this.status = status;
         return true;
     }
-
+    /**
+     * This sets the task owner for the task a user decides to complete
+     * @param taskOwner Sets the task owner
+     * @return True if the task owner is successfully set up; false otherwise
+     */
     public boolean setTaskOwner(User taskOwner) {
         if(taskOwner == null || this.taskOwner != null)
             return false;
