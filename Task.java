@@ -101,4 +101,8 @@ public class Task {
     public ArrayList<Change> getChanges() {
         return changes;
     }
+
+    public String getTaskName() {
+        return taskName;
+    }
 }

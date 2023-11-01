@@ -116,7 +116,7 @@ public class Project {
                 newFile.write("\n");
             }
 
-             newFile.write("\nColumns\t\tTasks\n\n");
+            newFile.write("\nColumns\t\tTasks\n\n");
 
             for(Column column : columns) {
                 newFile.write(column.getColumnName()+"\t\t");
@@ -125,6 +125,11 @@ public class Project {
                     newFile.write(task.getTaskName());
                 }
                 newFile.write("\n");
+            }
+
+            newFile.write("\nComments\n\n");
+            for(Comment comment : comments) {
+                newFile.write(comment.getComment()+" posted by"+comment.getAuthor()+"\n");
             }
 
 			newFile.close();
