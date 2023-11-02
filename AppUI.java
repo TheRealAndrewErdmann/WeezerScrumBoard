@@ -29,7 +29,7 @@ public class AppUI {
         found.addColumn(abandoned);
         found.addParticipant(Atticus, "Scrum Master");
         found.addParticipant(Jeff, "Developer");
-        found.addParticipant(Finch, "Product Owner");
+        found.addParticipant(Finch, "Product Owner"); 
 
         Task cylinder = new Task(found, "Curve the metal to make a cylindrical shape",
                                  "description", Category.Feature, "High");
@@ -41,7 +41,7 @@ public class AppUI {
 
         Comment avoid = new Comment("Atticus Madden", "Avoid civllians Jeff!");
         initialize.addComment(avoid);
-        Comment reply = new Comment("Atticus Madden", "How about you do it jeff.");
+        Comment reply = new Comment("Atticus Madden", "How about you do it jeff."); 
 
         PMSoftware.findProject("Electrical Missiles").changeTaskStatus(initialize, "Incomplete", "To Do");
         PMSoftware.findProject("Electrical Missiles").changeTaskStatus(cylinder, "To Do", "Doing");

@@ -35,6 +35,7 @@ public class Task {
      * This method allows you to update the status of a task to a new status if the status of the task is not null.
      * @param newStatus The new status for the task
      * @return True if the task is successfully changed, false otherwise
+     * @author Shiv Patel
      */
     public boolean changeStatus(String newStatus){
         if(status == null)
@@ -47,6 +48,7 @@ public class Task {
      * This method updates the task's description with the provided input 
      * @param description The new description for the task
      * @return True if the description was successfully changed; false otherwise.
+     * @author Shiv Patel
      */
     public boolean changeDescription(String description){
         if(description == null)
@@ -59,6 +61,7 @@ public class Task {
      * Changes the priority of the current object to the specified priority
      * @param priority The new priority to set. Must not be null
      * @return True if the priority was successfully changed; false otherwise
+     * @author Shiv Patel
      */
     public boolean changePriority(String priority){
         if(priority == null)
@@ -72,6 +75,7 @@ public class Task {
      * This method adds the specified comment to the list of comments 
      * @param comment The comment to add to the list 
      * @return True if the comment was added; false otherwise.
+     * @author Shiv Patel
      */
     public boolean addComment(Comment comment){
         if(comment == null)
@@ -82,6 +86,7 @@ public class Task {
      * Sets the status of an object to the specified value
      * @param status To set the new status
      * @return True if the status was set; false otherwise
+     * @author Shiv Patel
      */
     public boolean setStatus(String status) {
         if(status == null)
@@ -94,6 +99,7 @@ public class Task {
      * This sets the task owner for the task a user decides to complete
      * @param taskOwner Sets the task owner
      * @return True if the task owner is successfully set up; false otherwise
+     * @author Shiv Patel
      */
     public boolean setTaskOwner(User taskOwner) {
         if(taskOwner == null || this.taskOwner != null)
@@ -102,14 +108,29 @@ public class Task {
         return true;
     }
 
+    /**
+     * Gets the changes that were made to task and stores it in an array list
+     * @return the changes
+     * @author Shiv Patel
+     */
     public ArrayList<Change> getChanges() {
         return changes;
     }
 
+    /**
+     * Gets the comments and stores it in an array list
+     * @return Comments added
+     * @author Shiv Patel
+     */
     public ArrayList<Comment> getComments() {
         return comments;
     }
 
+    /**
+     * Gets the name of the task
+     * @return the task name
+     * @author Shiv Patel
+     */
     public String getTaskName() {
         return taskName;
     }
