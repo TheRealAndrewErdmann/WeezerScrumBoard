@@ -111,7 +111,7 @@ public class Project {
                 newFile.write(role+"\t\t");
 
                 for(User user : participants.get(role)) {
-                    newFile.write(user.getFirstName()+" ");
+                    newFile.write(user.getFirstName()+" "+user.getLastName()+"  ");
                 }
                 newFile.write("\n");
             }
@@ -124,7 +124,7 @@ public class Project {
                 for(Task task : column.getTasks()) {
                     newFile.write(task.getTaskName()+" - ");
                     for(Comment comment : task.getComments()) {
-                        newFile.write(comment.getComment()+" posted by"+comment.getAuthor()+"\n");
+                        newFile.write(comment.getComment()+" posted by "+comment.getAuthor()+"\n");
                     }
                 }
                 newFile.write("\n");
@@ -132,7 +132,7 @@ public class Project {
 
             newFile.write("\nComments\n\n");
             for(Comment comment : comments) {
-                newFile.write(comment.getComment()+" posted by"+comment.getAuthor()+"\n");
+                newFile.write(comment.getComment()+" posted by "+comment.getAuthor()+"\n");
             }
 
 			newFile.close();
