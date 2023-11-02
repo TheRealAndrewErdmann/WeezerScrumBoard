@@ -2,11 +2,16 @@ Electric Missles - Make electric missles
 
 Role		Particpants
 
+Scrum Master		Atticus 
+Developer		Jeff 
 
 Columns		Tasks
 
-To Do		
-Doing		Initialize super algorithm to detonate at warp speed
+To Do		Initialize super algorithm to detonate at warp speed - Avoid civllians Jeff! posted byAtticus Madden
+
+Doing		Curve the metal to make a cylindrical shape - Not cyclindrical enough posted byJeff Goldblum
+What's a cylinder? posted byAtticus Finch
+
 Complete		
 Abandoned		
 
