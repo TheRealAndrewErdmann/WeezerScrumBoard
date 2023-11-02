@@ -6,6 +6,10 @@ public class Column {
     private ArrayList<Task> tasks;
     private ArrayList<String> status;
 
+
+    /**
+     * Constructor for new columns
+     */
     public Column(String name, String status) {
         columnName = name;
         this.tasks = new ArrayList<Task>();
@@ -13,14 +17,22 @@ public class Column {
         this.status.add(status);
     }
 
-    //adds a task to task list
+    /**
+     * Adds the given task to the column
+     * @param task Task to be added
+     * @return boolean representing whether the addition of the task was successful
+     */
     public boolean addTask(Task task) {
         if(task == null)
             return false;
         return tasks.add(task);
     }
 
-    //removes a task from task list
+    /**
+     * Removes the given task from the column
+     * @param task Task to be removed
+     * @return boolean repersenting whether the removal of the task was sucessful
+     */
     public boolean removeTask(Task task) {
         if(task == null)
             return false;
