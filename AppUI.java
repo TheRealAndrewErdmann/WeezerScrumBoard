@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 public class AppUI {
     private PMSoftware PMSoftware;
 
@@ -21,6 +20,7 @@ public class AppUI {
         }
 
         System.out.println("\n----Viewing Electric Missiles----");
+
         Column abandoned = new Column("Abandoned", "Incomplete");
         User Atticus = new User("Atticus", "Madden", "Amadden", "Madden", "amadden@gamil.com", "803-730-4872");
         User Jeff = new User("Jeff", "Goldblum", "Jgoldblum", "Password", "jgoldblum@gamil.com", "803-826-9943");
@@ -36,14 +36,14 @@ public class AppUI {
         Task initialize = new Task(found, "Initialize super algorithm to detonate at warp speed", 
                                     "description", Category.Feature, "Medium");
         Task burger = new Task(found, "Make impossible burger possible", "description", 
-                                Category.Feature, "Low");    
+                                Category.Feature, "Low");  
         found.addTask(initialize, "Incomplete");
 
         Comment avoid = new Comment("Atticus Madden", "Avoid civllians Jeff!");
         initialize.addComment(avoid);
         Comment reply = new Comment("Atticus Madden", "How about you do it jeff.");
 
-        PMSoftware.findProject("Electrical Missiles").changeTaskStatus(initialize, "To Do", "To Do");
+        PMSoftware.findProject("Electrical Missiles").changeTaskStatus(initialize, "Incomplete", "To Do");
         PMSoftware.findProject("Electrical Missiles").changeTaskStatus(cylinder, "To Do", "Doing");
         PMSoftware.findProject("Electrical Missiles").changeTaskStatus(burger, "To Do", "Abandoned");
         
@@ -54,10 +54,10 @@ public class AppUI {
         cylinder.addComment(question);
 
         System.out.println("Moving task (" + cylinder.getTaskName() + ") to 'Doing' column.");
-        System.out.println("Replying to Jeff Goldblum " + reply.getComment());
+        System.out.println("Replying to Jeff Goldblum \"" + reply.getComment() + "\"");
         System.out.println("Moving task (" + burger.getTaskName() + ") to 'Abandoned' column.\n");
         found.print();
-        System.out.println("Your scrum board can be found in scrum.txt.");
+        System.out.println("Code Mission Possible scrum board can be found in scrum.txt.");
     }
 
     public static void main(String[] args) {

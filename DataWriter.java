@@ -19,9 +19,7 @@ public class DataWriter extends FileConstants{
         for(int i =0; i<users.size(); i++) {
             jsonUsers.add(getUserJSON(users.get(i)));
         }
-
-        //change "userTest.json" to "JSON/user.json" when done testing
-        //also delete userTest.json when done testing
+        
         try (FileWriter file = new FileWriter("JSON/user.json")) {
 
             file.write(jsonUsers.toJSONString());

@@ -11,6 +11,10 @@ import org.json.simple.parser.JSONParser;;
 
 public class FileLoader extends FileConstants{  
 
+    /**
+     * Reads users from the user json file
+     * @return an array list of users read from the user json file
+     */
     public static ArrayList<User> getUsers() {
 
         ArrayList<User> users =  new ArrayList<User>();
@@ -44,7 +48,11 @@ public class FileLoader extends FileConstants{
         return null;
 
     }
-    
+   
+    /**
+     * Reads projects from the project json file
+     * @return an array list of projects from the json file
+     */
     public static ArrayList<Project> getProjects() {
         ArrayList<Project> projects = new ArrayList<Project>();
         ArrayList<Column> columns = new ArrayList<Column>();
@@ -121,9 +129,6 @@ public class FileLoader extends FileConstants{
                         }
                         tasks.add(new Task((Project)projectsJSON.get(i),taskName, taskDescription, category, priority));
 
-                        for (int w = 0; w < tasks.size(); w++) {
-                            System.out.println(tasks.get(w).getTaskName());
-                        }
                     }
 
                     String status = (String)columnJSON.get("status");
