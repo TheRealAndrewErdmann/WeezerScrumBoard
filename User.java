@@ -41,35 +41,76 @@ public class User {
         this.phoneNum = phoneNum;
 
     }
-
+    
+    /**
+     * Gets the id from the UUID
+     * @return the id
+     * @author Shiv Patel
+     */
     public UUID getID(){
         return id;
     }
 
+    /**
+     * Gets the first name of the user
+     * @return the first name
+     * @author Shiv Patel
+     */
     public String getFirstName(){
         return firstName;
     }
 
+    /**
+     * Gets the last name of the user
+     * @return the last name
+     * @author Shiv Patel
+     */
     public String getLastName(){
         return lastName;
     }
 
+    /**
+     * Gets the user name of the user
+     * @return the username
+     * @author Shiv Patel
+     */
     public String getUserName(){
         return userName;
     }
 
+    /**
+     * Gets the password of the user
+     * @return the password
+     * @author Shiv Patel
+     */
     public String getPassword(){
         return password;
     }
 
+    /**
+     * Gets the email of the user
+     * @return the email
+     * @author Shiv Patel
+     */
     public String getEmail(){
         return email;
     }
 
+    /**
+     * Gets the phone number of the user
+     * @return the phone number
+     * @author Shiv Patel
+     */
     public String getPhoneNum(){
         return phoneNum;
     }
 
+    /**
+     * Checks and verifies the user based on the login info
+     * @param Password Checks if the password matches
+     * @return True if the password matches, false otherwise
+     * @author Shiv Patel
+     */
     public boolean verifyLogin(String Password) {
         if (password == Password) {
             return true;
