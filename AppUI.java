@@ -1,10 +1,16 @@
 public class AppUI {
     private PMSoftware PMSoftware;
 
+    /**
+     * Constructs the UI for the project management app
+     */
     AppUI() {
         PMSoftware = new PMSoftware();
     }
 
+    /**
+     * Method to run the project management app with a given scenario 
+     */
     public void scenario() {
 
         System.out.println("Welcome to Code Mission Possible"); 
