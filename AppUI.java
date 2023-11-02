@@ -29,7 +29,7 @@ public class AppUI {
         found.addColumn(abandoned);
         found.addParticipant(Atticus, "Scrum Master");
         found.addParticipant(Jeff, "Developer");
-        found.addParticipant(Finch, "Product Owner");
+        found.addParticipant(Finch, "Product Owner");   //alex ends here
 
         Task cylinder = new Task(found, "Curve the metal to make a cylindrical shape",
                                  "description", Category.Feature, "High");
@@ -37,11 +37,11 @@ public class AppUI {
                                     "description", Category.Feature, "Medium");
         Task burger = new Task(found, "Make impossible burger possible", "description", 
                                 Category.Feature, "Low");    
-        found.addTask(initialize, "Incomplete");
+        found.addTask(initialize, "Incomplete");    //andrew ends here
 
         Comment avoid = new Comment("Atticus Madden", "Avoid civllians Jeff!");
         initialize.addComment(avoid);
-        Comment reply = new Comment("Atticus Madden", "How about you do it jeff.");
+        Comment reply = new Comment("Atticus Madden", "How about you do it jeff."); //shiv ends here 
 
         PMSoftware.findProject("Electrical Missiles").changeTaskStatus(initialize, "To Do", "To Do");
         PMSoftware.findProject("Electrical Missiles").changeTaskStatus(cylinder, "To Do", "Doing");
@@ -51,7 +51,7 @@ public class AppUI {
         Comment question = new Comment("Atticus Finch", "What's a cylinder?");
 
         cylinder.addComment(cylindrical);
-        cylinder.addComment(question);
+        cylinder.addComment(question);  //yingdong ends here 
 
         System.out.println("Moving task (" + cylinder.getTaskName() + ") to 'Doing' column.");
         System.out.println("Replying to Jeff Goldblum " + reply.getComment());
