@@ -1,5 +1,6 @@
 /**
  * Represents a change or modification made by a user.
+ * @author yingdongfeng
  */
 public class Change {
     /** Description of the change. */

@@ -1,5 +1,6 @@
 /**
  * Enum representing different categories for software changes or tasks.
+ * @author yingdongfeng
  */
 public enum Category {
     /** Represents a software defect or malfunction. */
