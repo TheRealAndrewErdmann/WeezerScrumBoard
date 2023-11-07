@@ -1,5 +1,6 @@
 /**
  * Enum representing different roles in a Scrum team.
+ * @author yingdongfeng
  */
 public enum Role {
     /** Represents the product owner role, responsible for defining product features. */
