@@ -1,7 +1,7 @@
 [
     {
         "id": "e99d712a-9ecf-4423-b5a0-6396ee821872",
-        "title": "Develop a chat bot",
+        "title": "Chat Bot",
         "description": "Develop a chat bot to answer users' questions and guide them around the website",
         "participants": [{
             "role": "Scrum master",

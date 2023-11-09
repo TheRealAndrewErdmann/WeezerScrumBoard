@@ -20,19 +20,19 @@ public class FileLoader extends FileConstants{
         ArrayList<User> users =  new ArrayList<User>();
 
         try {
-			FileReader reader = new FileReader("JSON/scenarioUsers.json");
+			FileReader reader = new FileReader("JSON/userTest.json");
 			JSONParser parser = new JSONParser();
 			JSONArray usersJSON = (JSONArray)new JSONParser().parse(reader);
 
             for (int i = 0; i < usersJSON.size(); i++) {
                 JSONObject userJSON = (JSONObject)usersJSON.get(i);
                 UUID id = UUID.fromString((String)userJSON.get("id"));
-                String firstName = (String)userJSON.get("first-name");
-                String lastName = (String)userJSON.get("last-name");
-                String userName = (String)userJSON.get("user-name");
+                String firstName = (String)userJSON.get("firstName");
+                String lastName = (String)userJSON.get("lastName");
+                String userName = (String)userJSON.get("userName");
                 String password = (String)userJSON.get("password");
                 String email    = (String)userJSON.get("email");
-                String phoneNum = (String)userJSON.get("phone-number");
+                String phoneNum = (String)userJSON.get("phoneNum");
 
                 users.add(new User(id, firstName, lastName, userName, password, email, phoneNum));
 
@@ -167,4 +167,55 @@ public class FileLoader extends FileConstants{
 
         return null;
     }
+
+        //main method for testing (delete when done testing)
+        public static void main(String[] args) {
+            ArrayList<User> printUsers = getUsers();
+            for (int i = 0; i < printUsers.size(); i++) {
+                System.out.println(printUsers.get(i).getID());
+                System.out.println(printUsers.get(i).getFirstName());
+                System.out.println(printUsers.get(i).getLastName());
+                System.out.println(printUsers.get(i).getUserName());
+                System.out.println(printUsers.get(i).getPassword());
+                System.out.println(printUsers.get(i).getEmail());
+                System.out.println(printUsers.get(i).getPhoneNum());
+                System.out.println();
+            }
+
+            // /* 
+        ArrayList<Project> printProjects = new ArrayList<Project>();
+        printProjects = getProjects();
+        ArrayList<Comment> printComments;
+        ArrayList<Column> printColumn;
+        ArrayList<Task> printTask;
+        for (int i = 0; i < printProjects.size(); i++) {
+            System.out.println(printProjects.get(i).getID());
+            System.out.println(printProjects.get(i).getTitle());
+            System.out.println(printProjects.get(i).getDescription());
+            System.out.println(printProjects.get(i).getParticipants());
+            System.out.println(printProjects.get(i).getColumns());
+
+            printColumn = printProjects.get(i).getColumns();
+            for (int k = 0; k < printColumn.size(); k++) {
+                System.out.println(printColumn.get(k).getColumnName());
+            }
+
+            /*
+            System.out.println(printProjects.get(i).getTasks());
+            printTask = printProjects.get(i).getTasks();
+            for (int b = 0; b < printTask.size(); b++) {
+                System.out.println(printTask.get(b).getTaskName());
+            }
+            */
+
+            System.out.println(printProjects.get(i).getComments());
+            printComments = printProjects.get(i).getComments();
+            for (int j = 0; j < printComments.size(); j++) {
+                System.out.println(printComments.get(j).getComment());
+            }
+            System.out.println();
+        }
+        // */
+        }
+
 }
