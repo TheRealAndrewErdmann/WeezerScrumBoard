@@ -134,4 +134,17 @@ public class Task {
     public String getTaskName() {
         return taskName;
     }
+	public Object getStatus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public Object getDescription() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public Object getPriority() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

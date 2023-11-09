@@ -84,8 +84,17 @@ public class DataWriter extends FileConstants{
         projectInfo.put(TITLE, project.getTitle());
         projectInfo.put(DESCRIPTION, project.getDescription());
         projectInfo.put(PARTICIPANTS, project.getParticipants());
-        projectInfo.put(COLUMNS, project.getColumns());
-        projectInfo.put(COMMENTS, project.getComments());
+
+        JSONArray JSONcolumns = new JSONArray();
+        for(Column column : project.getColumns())
+            JSONcolumns.add(column);
+        projectInfo.put(COLUMNS, JSONcolumns);
+
+        JSONArray JSONcomments = new JSONArray();
+        for(Comment comment : project.getComments()) {
+            JSONcomments.add(comment);
+        }
+        projectInfo.put(COMMENTS, JSONcomments);
 
         return projectInfo;
     }
