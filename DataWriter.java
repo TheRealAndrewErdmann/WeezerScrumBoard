@@ -28,7 +28,6 @@ public class DataWriter extends FileConstants{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
