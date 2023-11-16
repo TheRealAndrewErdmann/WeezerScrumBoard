@@ -48,14 +48,14 @@ public class Project {
     }
     
 
-    public boolean removeParticipant(User user, Role role) {
+    public boolean removeParticipant(User user, String role) {
         if(user == null || role == null)
             return false;
         return participants.get(role).remove(user);
     }
 
     
-    public boolean changeRole(User user, Role curRole, Role newRole) {
+    public boolean changeRole(User user, String curRole, String newRole) {
         if(user == null || curRole == null || newRole == null)
             return false;
         if(participants.get(curRole).remove(user) == false)

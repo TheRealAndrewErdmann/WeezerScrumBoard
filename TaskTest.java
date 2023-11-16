@@ -96,7 +96,7 @@ class TaskTest {
      */
     @Test
     public void testAddComment() {
-        Comment comment = new Comment(user, "This is a test comment.");
+        Comment comment = new Comment("user", "This is a test comment.");
         assertTrue(task.addComment(comment));
         assertEquals(1, task.getComments().size());
         assertTrue(task.addComment(null)); 

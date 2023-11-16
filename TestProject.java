@@ -61,7 +61,7 @@ assertTrue(project.getParticipants().get(newRole).contains(user));
 * column with the true status.
 */
 public void testAddTask(){
-Column column = new Column("To Do");
+Column column = new Column("To Do", "To Do");
 project.addColumn(column);
 Task task = new Task ("Task 1");
 String status = "To do";
